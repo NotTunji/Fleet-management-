@@ -1,0 +1,24 @@
+table {
+    margin-left: 20px;
+    width: 90%;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  .button-vehicle {
+    
+    color: black;
+    
+  }
