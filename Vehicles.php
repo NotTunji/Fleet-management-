@@ -37,8 +37,8 @@
   <meta charset="UTF-8">
   <title>Website Homepage</title>
   <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./css/Vehicles.css">
-  <!-- <script defer src="/JS/vehicles.js"></script> -->
+  <link rel="stylesheet" href="./css/Vehicle.css">
+  <script defer src="/JS/vehicles.js"></script>
 </head>
 
 <body class="body__container">
@@ -92,19 +92,19 @@
           <!-- <th>Vehicle Number</th> -->
         </tr>
         <?php if(count($user))
-        {
-          // echo count($user);
-                for($veh_count = 0;$veh_count << count($user);$veh_count++ ){
-          echo( "<tr>
-          <td>".$user[$veh_count]["reg_no"]."</td>
-          <td>".$user[$veh_count]["veh_no"]."</td>
-          <td>".$user[$veh_count]["device_sub"]."</td>
-          <td>".$user[$veh_count]["account_no"]."</td>
-          <td>".$user[$veh_count]["device"]."</td>
+    {
+      // echo count($user);
+      for($veh_count = 0;$veh_count << count($user);$veh_count++ ){
+echo "<tr>
+<td>".$user[$veh_count]["reg_no"]."</td>
+<td>".$user[$veh_count]["veh_no"]."</td>
+<td>".$user[$veh_count]["device_sub"]."</td>
+<td>".$user[$veh_count]["account_no"]."</td>
+<td>".$user[$veh_count]["device"]."</td>
 
-          </tr> "); 
+</tr> "; 
             }
-        }
+          }
 
         ?>
 
