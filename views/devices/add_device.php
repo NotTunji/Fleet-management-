@@ -14,7 +14,7 @@
     />
     <title>add device</title>
     <h1>NEW DEVICE</h1>
-    <link rel="stylesheet" href="./css/add_device.css">
+    <link rel="stylesheet" href="../../css/add_device.css">
   </head>
 <body>
   <form action="add_device_logic.php" method="post">
@@ -72,7 +72,7 @@
   </body>
   <style>
   body {
-      background-image:url('cover.png')
+      background-image:url('../../img/cover.png')
     }
   </style>
   

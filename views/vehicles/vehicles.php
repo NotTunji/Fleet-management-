@@ -1,34 +1,34 @@
 <?php
-           session_start();
+          //  session_start();
 
-           include 'connect.php';
+          //  include 'connect.php';
     
-           $user = [];
+          //  $user = [];
        
            
-           $stmt = $conn->prepare('SELECT * FROM vehicles');
+          //  $stmt = $conn->prepare('SELECT * FROM vehicles');
        
-          //  $stmt->bind_param("ss",$username,$password);
-           $stmt->execute();
-           $result = $stmt->get_result();
+          // //  $stmt->bind_param("ss",$username,$password);
+          //  $stmt->execute();
+          //  $result = $stmt->get_result();
        
-           if($result->num_rows > 0)
-           {
-              while($row = mysqli_fetch_assoc($result)) {
-                array_push($user,$row);
-                // $user = $result->fetch_assoc();
+          //  if($result->num_rows > 0)
+          //  {
+          //     while($row = mysqli_fetch_assoc($result)) {
+          //       array_push($user,$row);
+          //       // $user = $result->fetch_assoc();
                 
-              }
-               // echo "welcome ".$user["username"];
-              //  echo $user["reg_no"] ;
-              //  header("Location:Analytics.php");
-           }
+          //     }
+          //      // echo "welcome ".$user["username"];
+          //     //  echo $user["reg_no"] ;
+          //     //  header("Location:Analytics.php");
+          //  }
        
-           else
-           {
-               $user = [];
+          //  else
+          //  {
+          //      $user = [];
        
-           } 
+          //  } 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,9 +36,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Website Homepage</title>
-  <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./css/Vehicle.css">
-  <script defer src="/JS/vehicles.js"></script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/Vehicle.css">
+  <script defer src="../../JS/vehicles.js"></script>
 </head>
 
 <body class="body__container">
@@ -51,12 +51,12 @@
     </div>
 
     <ul class="sidebar">
-      <li class="sidebar__item"><a href="Analytics.php">Analytics</a></li>
+      <li class="sidebar__item"><a href="../analytics.php">Analytics</a></li>
       <li class="sidebar__item"><a class="active" href="Vehicles.php">Vehicles</a></li>
-      <li class="sidebar__item"><a href="Devices.php">Devices</a></li>
-      <li class="sidebar__item"><a href="Trips.php">Trips</a></li>
-      <li class="sidebar__item"><a href="Report.php">Report</a></li>
-      <li class="sidebar__item"><a href="usermanagement.php">User management</a></li>
+      <li class="sidebar__item"><a href="../devices/devices.php">Devices</a></li>
+      <li class="sidebar__item"><a href="../trips.php">Trips</a></li>
+      <li class="sidebar__item"><a href="../report.php">Report</a></li>
+      <li class="sidebar__item"><a href="../usermanagement.php">User management</a></li>
     </ul>
   </div>
 
@@ -66,11 +66,11 @@
         <h1>Welcome</h1>
       </div>
       <div class="header-right">
-        <img src="userprofile.png" alt="User Profile">
-        <div class="dropdown">
+      <img src="../../img/userprofile.png" alt="User Profile">
+            <div class="dropdown">
           <ul>
-            <li><a href="Settings.html">Settings</a></li>
-            <li><a href="index.php">Logout</a></li>
+            <li><a href="settings.php">Settings</a></li>
+            <li><a href="/auth/index.php">Logout</a></li>
 
           </ul>
         </div>

@@ -17,7 +17,7 @@
     />
     <title>Document</title>
     <h1> ADD VEHICLE</h1>
-    <link rel="stylesheet" href="./css/add_vehicle.css">
+    <link rel="stylesheet" href="../css/add_vehicle.css">
   </head>
   <body>
     <!-- form to add vehicle  -->
@@ -58,7 +58,7 @@
   </body>
   <style>
   body {
-      background-image:url('cover.png')
+      background-image:url('../../img/cover.png')
     }
   </style>
 </html>
