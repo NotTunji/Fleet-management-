@@ -16,12 +16,12 @@
     </div>
 
     <ul class="sidebar"> 
-      <li class="sidebar__item"><a href="Analytics.html" class="active">Analytics</a></li>
-      <li class="sidebar__item"><a href="Vehicles.html">Vehicles</a></li>
-      <li class="sidebar__item"><a href="Devices.html">Devices</a></li>
-      <li class="sidebar__item"><a href="Trips.html" >Trips</a></li>
-      <li class="sidebar__item"><a href="Report.html">Report</a></li>
-      <li class="sidebar__item"><a href="usermanagement.html">User management</a></li>
+      <li class="sidebar__item"><a href="Analytics.php" class="active">Analytics</a></li>
+      <li class="sidebar__item"><a href="Vehicles.php">Vehicles</a></li>
+      <li class="sidebar__item"><a href="Devices.php">Devices</a></li>
+      <li class="sidebar__item"><a href="Trips.php" >Trips</a></li>
+      <li class="sidebar__item"><a href="Report.php">Report</a></li>
+      <li class="sidebar__item"><a href="usermanagement.php">User management</a></li>
     </ul>
   </div>
   <div class="main__content">
@@ -33,7 +33,7 @@
         <img src="userprofile.png" alt="User Profile">
         <div class="dropdown">
           <ul>
-            <li><a href="Settings.html">Settings</a></li>
+            <li><a href="Settings.php">Settings</a></li>
             <li><a href="index.php">Logout</a></li>
             
           </ul>

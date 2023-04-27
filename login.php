@@ -19,7 +19,7 @@
         $user = $result->fetch_assoc();
         // echo "welcome ".$user["username"];
         
-        header("Location:Analytics.html");
+        header("Location:Analytics.php");
     }
 
     else

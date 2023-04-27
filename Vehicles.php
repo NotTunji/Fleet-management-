@@ -1,21 +1,48 @@
 <?php
-    session_start();
+           session_start();
 
-    include 'connect.php';
-
-
+           include 'connect.php';
+    
+           $user = [];
+       
+           
+           $stmt = $conn->prepare('SELECT * FROM vehicles');
+       
+          //  $stmt->bind_param("ss",$username,$password);
+           $stmt->execute();
+           $result = $stmt->get_result();
+       
+           if($result->num_rows > 0)
+           {
+              while($row = mysqli_fetch_assoc($result)) {
+                array_push($user,$row);
+                // $user = $result->fetch_assoc();
+                
+              }
+               // echo "welcome ".$user["username"];
+              //  echo $user["reg_no"] ;
+              //  header("Location:Analytics.php");
+           }
+       
+           else
+           {
+               $user = [];
+       
+           } 
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-	<meta charset="UTF-8">
-	<title>Website Homepage</title>
-    <link rel="stylesheet" href="./css/Vehicles.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <script defer src="/JS/vehicles.js"></script>
-    </head>
-    
+
+<head>
+  <meta charset="UTF-8">
+  <title>Website Homepage</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/Vehicles.css">
+  <!-- <script defer src="/JS/vehicles.js"></script> -->
+</head>
+
 <body class="body__container">
+
   <div class="sidebar__content">
     <div>
       <div class="logo">
@@ -23,16 +50,17 @@
       </div>
     </div>
 
-    <ul class="sidebar"> 
-      <li class="sidebar__item"><a href="Analytics.html">Analytics</a></li>
-      <li class="sidebar__item"><a class="active" href="Vehicles.html">Vehicles</a></li>
-      <li class="sidebar__item"><a href="Devices.html">Devices</a></li>
-      <li class="sidebar__item"><a href="Trips.html">Trips</a></li>
-      <li class="sidebar__item"><a href="Report.html">Report</a></li>
-      <li class="sidebar__item"><a href="usermanagement.html">User management</a></li>
+    <ul class="sidebar">
+      <li class="sidebar__item"><a href="Analytics.php">Analytics</a></li>
+      <li class="sidebar__item"><a class="active" href="Vehicles.php">Vehicles</a></li>
+      <li class="sidebar__item"><a href="Devices.php">Devices</a></li>
+      <li class="sidebar__item"><a href="Trips.php">Trips</a></li>
+      <li class="sidebar__item"><a href="Report.php">Report</a></li>
+      <li class="sidebar__item"><a href="usermanagement.php">User management</a></li>
     </ul>
   </div>
-  <div class="main__content">
+
+  <div class="main__content vehicles_main">
     <header>
       <div class="header-left">
         <h1>Welcome</h1>
@@ -43,63 +71,77 @@
           <ul>
             <li><a href="Settings.html">Settings</a></li>
             <li><a href="index.php">Logout</a></li>
-            
+
           </ul>
-      </div>
+        </div>
       </div>
     </header>
-    
-  <div class="table">
-        <table>
-      <tr>
-        <th>Regstration Number</th>
-        <th>Vehicle Number</th>
-        <th>Device Subscription</th>
-        <th>Account</th>
-        <th>Device</th>
-        <th>Vehicle Number</th>
-      </tr>
-      <tr>
-        <td>Row 1, Column 1</td>
-        <td>Row 1, Column 2</td>
-        <td>Row 1, Column 3</td>
-        <td>Row 1, Column 4</td>
-        <td>Row 1, Column 5</td>
-        <td>Row 1, Column 6</td>
-      </tr>
-      <!-- <tr>
-        <td>Row 2, Column 1</td>
-        <td>Row 2, Column 2</td>
-        <td>Row 2, Column 3</td>
-        <td>Row 2, Column 4</td>
-        <td>Row 2, Column 5</td>
-        <td>Row 2, Column 6</td>
-      </tr>
-      <tr>
-        <td>Row 3, Column 1</td>
-        <td>Row 3, Column 2</td>
-        <td>Row 3, Column 3</td>
-        <td>Row 3, Column 4</td>
-        <td>Row 3, Column 5</td>
-        <td>Row 3, Column 6</td>
-      </tr>
-      <tr>
-        <td>Row 4, Column 1</td>
-        <td>Row 4, Column 2</td>
-        <td>Row 4, Column 3</td>
-        <td>Row 4, Column 4</td>
-        <td>Row 4, Column 5</td>
-        <td>Row 4, Column 6</td>
-      </tr> -->
-    </table> 
+
+    <div class="button-vehicle">
+      <a href="add_vehicle.php" class="button">New Vehicle</a>
+    </div>
+
+    <div class="table">
+      <table>
+        <tr>
+          <th>Regstration Number</th>
+          <th>Vehicle Number</th>
+          <th>Device Subscription</th>
+          <th>Account</th>
+          <th>Device</th>
+          <!-- <th>Vehicle Number</th> -->
+        </tr>
+        <?php if(count($user))
+        {
+          // echo count($user);
+                for($veh_count = 0;$veh_count << count($user);$veh_count++ ){
+          echo( "<tr>
+          <td>".$user[$veh_count]["reg_no"]."</td>
+          <td>".$user[$veh_count]["veh_no"]."</td>
+          <td>".$user[$veh_count]["device_sub"]."</td>
+          <td>".$user[$veh_count]["account_no"]."</td>
+          <td>".$user[$veh_count]["device"]."</td>
+
+          </tr> "); 
+            }
+        }
+
+        ?>
+
+        <!-- <tr>
+      <td>Row 2, Column 1</td>
+      <td>Row 2, Column 2</td>
+      <td>Row 2, Column 3</td>
+      <td>Row 2, Column 4</td>
+      <td>Row 2, Column 5</td>
+      <td>Row 2, Column 6</td>
+    </tr>
+    <tr>
+      <td>Row 3, Column 1</td>
+      <td>Row 3, Column 2</td>
+      <td>Row 3, Column 3</td>
+      <td>Row 3, Column 4</td>
+      <td>Row 3, Column 5</td>
+      <td>Row 3, Column 6</td>
+    </tr>
+    <tr>
+      <td>Row 4, Column 1</td>
+      <td>Row 4, Column 2</td>
+      <td>Row 4, Column 3</td>
+      <td>Row 4, Column 4</td>
+      <td>Row 4, Column 5</td>
+      <td>Row 4, Column 6</td>
+    </tr> -->
+      </table>
+    </div>
   </div>
-</div>
-  <!-- Page content -->
-   <!-- <div class="button-vehicle">
-      <a href="#" class="button">New Vehicle</a>     </div>
-    </div> -->
+
+
+
+  <!-- </div> -->
+
+
 
 </body>
 
 </html>
-  

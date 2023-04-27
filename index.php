@@ -21,6 +21,8 @@
       
       h1 {
         text-align: center;
+        font-size: 500%;
+        font: 50px Arial, ;
         
         
       }
@@ -96,7 +98,7 @@
 
           <button>LOGIN</button>
           <p id="error_message"><?php  echo $_SESSION['error_message']; ?></p>
-          <a href="Admin.html"><b>Admin login</b>
+          <a href="Admin.php"><b>Admin login</b>
 
           
           
@@ -107,7 +109,7 @@
   <script src=""></script>
   <style>
     body {
-      background-image:url('background.jpeg')
+      background-image:url('cover.png')
     }
   
   </style>

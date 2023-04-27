@@ -15,12 +15,12 @@
     </div>
 
     <ul class="sidebar"> 
-      <li class="sidebar__item"><a href="Analytics.html">Analytics</a></li>
-      <li class="sidebar__item"><a href="Vehicles.html">Vehicles</a></li>
-      <li class="sidebar__item"><a href="Devices.html">Devices</a></li>
-      <li class="sidebar__item"><a href="Trips.html" class="active">Trips</a></li>
-      <li class="sidebar__item"><a href="Report.html">Report</a></li>
-      <li class="sidebar__item"><a href="usermanagement.html">User management</a></li>
+      <li class="sidebar__item"><a href="Analytics.php">Analytics</a></li>
+      <li class="sidebar__item"><a href="Vehicles.php">Vehicles</a></li>
+      <li class="sidebar__item"><a href="Devices.php">Devices</a></li>
+      <li class="sidebar__item"><a href="Trips.php" class="active">Trips</a></li>
+      <li class="sidebar__item"><a href="Report.php">Report</a></li>
+      <li class="sidebar__item"><a href="usermanagement.php">User management</a></li>
     </ul>
   </div>
   <div class="main__content">
