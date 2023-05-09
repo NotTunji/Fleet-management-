@@ -38,12 +38,7 @@
 	<title>Website Homepage</title>
     <link rel="stylesheet" href="../../css/devices.css">
     <link rel="stylesheet" href="../../css/style.css">
-    <script>
-    function myFunction() {
-      var element = document.body;
-      element.classList.toggle("dark-mode");
-    }
-  </script>
+   
     </head>
     <body class="body__container">
       <div class="sidebar__content">
@@ -59,7 +54,8 @@
           <li class="sidebar__item"><a class="active" href="devices.php">Devices</a></li>
           <li class="sidebar__item"><a href="../trips.php">Trips</a></li>
           <li class="sidebar__item"><a href="../report.php">Report</a></li>
-          <li class="sidebar__item"><a href="../usermanagement.php">User management</a></li>
+          <li class="sidebar__item"><a href="../vehicle_usage.php">Vehicle Usage</a></li>
+          <li class="sidebar__item"><a href="../maintainance/maintainance.php">Mantainance</a></li>
         </ul>
       </div>
 
@@ -81,8 +77,8 @@
         </header>
         
         <div class="button-vehicle">
-          <a href="add_device.php" class="button">New Device</a>    
-        </div> 
+          <a href="add_device.php"class="button">New Device</a>
+          </div>
       <div class="table">
         <table>
           <tr>

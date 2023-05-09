@@ -1,0 +1,61 @@
+body {
+    margin:50px 0px; padding:0px;
+    text-align:center;
+    box-align:center;
+    background-color: whitesmoke;
+}
+label,input {
+ display: inline-block;
+
+ 
+ margin-bottom: 15px;
+}
+
+label {
+ text-align: right;
+ width: 80px;
+ padding-right: 20px;
+ color: white;
+    
+    background-color:#555;
+}
+select {
+   
+   
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+  }
+
+
+form {
+  max-width: 500px;
+  margin: 0 auto;
+  display:contents;
+  flex-direction: column;
+}
+h1{
+  font-family: "Times New Roman";
+}
+button {
+  padding: 10px 20px;
+  background-color: #555;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+select option[value="on"]{
+  background-color: green;
+}
+select option[value="off"]{
+  background-color: red;
+}
+
+select option{
+  border: #555;
+  background-color: #555;
+}

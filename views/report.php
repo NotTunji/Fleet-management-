@@ -20,7 +20,8 @@
       <li class="sidebar__item"><a href="./devices/devices.php">Devices</a></li>
       <li class="sidebar__item"><a href="trips.php" >Trips</a></li>
       <li class="sidebar__item"><a href="report.php" class="active">Report</a></li>
-      <li class="sidebar__item"><a href="usermanagement.php">User management</a></li>
+      <li class="sidebar__item"><a href="vehicle_usage.php">Vehicle Usage</a></li>
+      <li class="sidebar__item"><a href="./maintainance/maintainance.php">Mantainance</a></li>
     </ul>
   </div>
   <div class="main__content">

@@ -65,6 +65,7 @@
         <label for="installed_at">Installation date</label>
         <input type="date" name="installed_at" placeholder="enter number" />
     </div>
+    
 
     <button type="submit">Submit</button>
     </form>

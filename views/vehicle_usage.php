@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/vehicle_usage.css">
 </head>
 
 <body class="body__container">
@@ -22,7 +23,8 @@
       <li class="sidebar__item"><a href="./devices/devices.php">Devices</a></li>
       <li class="sidebar__item"><a href="trips.php">Trips</a></li>
       <li class="sidebar__item"><a href="report.php">Report</a></li>
-      <li class="sidebar__item"><a href="usermanagement.php" class="active">User management</a></li>
+      <li class="sidebar__item"><a href="vehicle_usage.php" class="active">Vehicle Usage</a></li>
+      <li class="sidebar__item"><a href="./maintainance/maintainance.php">Mantainance</a></li>
     </ul>
   </div>
   <div class="main__content">
@@ -41,9 +43,26 @@
           </ul>
         </div>
       </div>
+    </header>
+    <div class="button-vehicle">
+      <a href="add_usage.php" class="button">New Usage</a>
+    </div>
 
-      </head>
-
+    <div class="table">
+    <table>
+        <head>
+            <tr>
+                <th>Vehicle ID</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Number of Days<th>
+                <th>Total Distance</th>
+                <th>Driver</th>
+                <th>Purpose</th>
+                <th>Fuel Consumption</th>
+                <th>Notes</th>
+            </tr>
+        </head>
       <body>
 
       </body>
