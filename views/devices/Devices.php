@@ -88,7 +88,7 @@
     
        
       </div>
-
+<main>
       <div class="main-content">
     <header>
     <h2>
@@ -165,7 +165,7 @@
 
       </div>
       
-      
+</main>
 
     
     </body>    

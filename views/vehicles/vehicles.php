@@ -111,6 +111,7 @@
         </div>
       </div>
     </header>
+    <main>
 
     <div class="button-vehicle">
       <a href="add_vehicle.php" class="button">New Vehicle</a>
@@ -176,7 +177,7 @@ echo "<tr>
   <!-- </div> -->
 
 
-
+</main>
 </body>
 
 </html>
