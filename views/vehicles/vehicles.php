@@ -36,38 +36,72 @@
 <head>
   <meta charset="UTF-8">
   <title>Website Homepage</title>
-  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/syle.css">
   <link rel="stylesheet" href="../../css/Vehicle.css">
   <script defer src="../../JS/vehicles.js"></script>
 </head>
 
-<body class="body__container">
+<body>
+    <input type='checkbox' id='nav-toggle'>
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h1>
+                <span class="lab la-accusoft"></span> 
+                <span>   </span>
+                <!-- <span>Accusoft</span> -->
+            </h1>
+        </div>
 
-  <div class="sidebar__content">
-    <div>
-      <div class="logo">
-        <h1>CTrack</h1>
-      </div>
+    <div class="sidebar-menu">
+    <ul>
+            <li>
+                <a href="../dashboard.php" ><span class="las la-igloo"></span>
+                    <span>Dashboard</span></a>
+            </li>
+            <li>
+                <a href="./vehicles/vehicles.php"class="active"><span class="las la-users"></span>
+                    <span>Vehicles</span></a>
+            </li>
+             <li>
+                <a href="../devices/devices.php"><span class="las la-clipboard-list"></span>
+                    <span>Devices</span></a>
+              </li>
+              <li>
+                    <a href="../trips.php"><span class="las la-clipboard-list"></span>
+                        <span>Trips</span></a>
+                </li>  
+                <li>
+                    <a href="../report.php"><span class="las la-clipboard-list"></span>
+                        <span>Report</span></a>
+                </li>  
+                <li>
+                    <a href="../vehicle_usage.php"><span class="las la-clipboard-list"></span>
+                        <span>Vehicle Usage </span></a>
+                </li>  
+                <li>
+                    <a href="../maintainance/maintainance.php"><span class="las la-clipboard-list"></span>
+                        <span>Maintainance</span></a>
+                </li>  
+</ul>
+        </div>
     </div>
+     
 
-    <ul class="sidebar">
-      <li class="sidebar__item"><a href="../analytics.php">Analytics</a></li>
-      <li class="sidebar__item"><a class="active" href="Vehicles.php">Vehicles</a></li>
-      <li class="sidebar__item"><a href="../devices/devices.php">Devices</a></li>
-      <li class="sidebar__item"><a href="../trips.php">Trips</a></li>
-      <li class="sidebar__item"><a href="../report.php">Report</a></li>
-      <li class="sidebar__item"><a href="../vehicle_usage.php">Vehicle Usage</a></li>
-      <li class="sidebar__item"><a href="../maintainance/maintainance.php">Mantainance</a></li>
-    </ul>
-  </div>
-
-  <div class="main__content vehicles_main">
+    <div class="main-content">
     <header>
-      <div class="header-left">
-        <h1>Welcome</h1>
-      </div>
-      <div class="header-right">
-      <img src="../../img/userprofile.png" alt="User Profile">
+    <h2>
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+                Vehicles
+            </h2>
+      <div class="user-wrapper">
+        <img src="../../img/userprofile.png" width="40px" height="40px" alt=""alt="User Profile">
+        <div>
+                    <h4>Jone Doe</h4>
+                    <small>Super admin</small>
+                </div>
+       
             <div class="dropdown">
           <ul>
             <li><a href="settings.php">Settings</a></li>

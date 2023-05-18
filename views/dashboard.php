@@ -1,11 +1,14 @@
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="../css/syle.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
 </head>
+
 <body>
     <input type='checkbox' id='nav-toggle'>
     <div class="sidebar">
@@ -20,7 +23,7 @@
     <div class="sidebar-menu">
         <ul>
             <li>
-                <a href="dashboard.php" ><span class="las la-igloo"></span>
+                <a href="dashboard.php" class="active"><span class="las la-igloo"></span>
                     <span>Dashboard</span></a>
             </li>
             <li>
@@ -32,7 +35,7 @@
                     <span>Devices</span></a>
               </li>
               <li>
-                    <a href="trips.php"class="active"><span class="las la-clipboard-list"></span>
+                    <a href="trips.php"><span class="las la-clipboard-list"></span>
                         <span>Trips</span></a>
                 </li>  
                 <li>
@@ -50,15 +53,16 @@
 </ul>
         </div>
     </div>
-    
-  </div>
+                
+     
+ 
   <div class="main-content">
     <header>
     <h2>
                 <label for="nav-toggle">
                     <span class="las la-bars"></span>
                 </label>
-                Trips
+                Dashboard
             </h2>
       <div class="user-wrapper">
         <img src="../img/userprofile.png" width="40px" height="40px" alt=""alt="User Profile">
@@ -66,14 +70,14 @@
                     <h4>Jone Doe</h4>
                     <small>Super admin</small>
                 </div>
-       
-            <div class="dropdown">
+</div>
+        <div class="dropdown">
           <ul>
-          <li><a href="settings.html">Settings</a></li>
-          <li><a href="/auth/index.php">Logout</a></li>
-            
+            <li><a href="settings.php">Settings</a></li>
+            <li><a href="/auth/index.php">Logout</a></li>
+
           </ul>
-      </div>
+        </div>
       </div>
     </header>
 
@@ -81,4 +85,5 @@
       ....
     </div>
 </body>
+
 </html>
