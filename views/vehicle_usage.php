@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+include 'auth/connect.php';
+
+// SQL query to retrieve data
+$sql = "SELECT * FROM vehicle_usage";
+$result = $conn->query($sql);
+
+?>
+
 <html lang="en">
 
 <head>
@@ -7,6 +18,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/syle.css">
     <link rel="stylesheet" href="../css/vehicle_usage.css">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 </head>
 
 <body>
@@ -27,15 +40,15 @@
                         <span>Dashboard</span></a>
                 </li>
                 <li>
-                    <a href="./vehicles/vehicles.php"><span class="las la-users"></span>
+                    <a href="./vehicles/vehicles.php"><span class="las la-truck"></span>
                         <span>Vehicles</span></a>
                 </li>
                 <li>
-                    <a href="./devices/devices.php"><span class="las la-clipboard-list"></span>
+                    <a href="./devices/devices.php"><span class="las la-toolbox"></span>
                         <span>Devices</span></a>
                 </li>
                 <li>
-                    <a href="trips.php"><span class="las la-clipboard-list"></span>
+                    <a href="trips.php"><span class="las la-road"></span>
                         <span>Trips</span></a>
                 </li>
                 <li>
@@ -47,7 +60,7 @@
                         <span>Vehicle Usage </span></a>
                 </li>
                 <li>
-                    <a href="./maintainance/maintainance.php"><span class="las la-clipboard-list"></span>
+                    <a href="./maintainance/maintainance.php"><span class="las la-user-edit"></span>
                         <span>Maintainance</span></a>
                 </li>
             </ul>
@@ -61,7 +74,7 @@
                 <label for="nav-toggle">
                     <span class="las la-bars"></span>
                 </label>
-                Dashboard
+                Vehicle Usage
             </h2>
             <div class="user-wrapper">
                 <img src="../img/userprofile.png" width="40px" height="40px" alt="" alt="User Profile">
@@ -92,14 +105,35 @@
                             <th>Vehicle ID</th>
                             <th>Start Date</th>
                             <th>End Date</th>
-                            <th>Number of Days
-                            <th>
+                            <th>Number of Days</th>
                             <th>Total Distance</th>
                             <th>Driver</th>
                             <th>Purpose</th>
                             <th>Fuel Consumption</th>
                             <th>Notes</th>
                         </tr>
+                        <?php
+                    if ($result->num_rows > 0) {
+                        // Output data of each row
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . $row["reg_no"] . "</td>";
+                            echo "<td>" . $row["start_date"] . "</td>";
+                            echo "<td>" . $row["end_date"] . "</td>";
+                            echo "<td>" . $row["numdays"] . "</td>";
+                            echo "<td>" . $row["total_distance"] . "</td>";
+                            echo "<td>" . $row["driver"] . "</td>";
+                            echo "<td>" . $row["purpose"] . "</td>";
+                            echo "<td>" . $row["fuel_consumption"] . "</td>";
+                            echo "<td>" . $row["notes"] . "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='3'>No data found</td></tr>";
+                    }
+
+                    $conn->close();
+                    ?>
                     </head>
 
                     <body>

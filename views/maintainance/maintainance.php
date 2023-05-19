@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+include '../auth/connect.php';
+
+// SQL query to retrieve data
+$sql = "SELECT * FROM mantainance ";
+$result = $conn->query($sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,6 +21,8 @@
     />
     <link rel="stylesheet" href="../../css/syle.css">
     <link rel="stylesheet" href="../../css/maintainance.css">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <script defer src="#"></script>
     </head>
     <body>
@@ -30,15 +43,15 @@
                     <span>Dashboard</span></a>
             </li>
             <li>
-                <a href="../vehicles/vehicles.php"><span class="las la-users"></span>
+                <a href="../vehicles/vehicles.php"><span class="las la-truck"></span>
                     <span>Vehicles</span></a>
             </li>
              <li>
-                <a href="../devices/devices.php"><span class="las la-clipboard-list"></span>
+                <a href="../devices/devices.php"><span class="las la-toolbox"></span>
                     <span>Devices</span></a>
               </li>
               <li>
-                    <a href="../trips.php"><span class="las la-clipboard-list"></span>
+                    <a href="../trips.php"><span class="las la-road"></span>
                         <span>Trips</span></a>
                 </li>  
                 <li>
@@ -50,7 +63,7 @@
                         <span>Vehicle Usage </span></a>
                 </li>  
                 <li>
-                    <a href="maintainance.php"class="active"><span class="las la-clipboard-list"></span>
+                    <a href="maintainance.php"class="active"><span class="las la-user-edit"></span>
                         <span>Maintainance</span></a>
                 </li>  
 </ul>
@@ -102,14 +115,34 @@
                         <table class="table ">
                             <tbody>
                             <tr>
-                                <th></th>
+                                
                                 <th> Registration number</th>
                                 <th>Vehicle Number</th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th> Remarks</th>
-                                <th> Action</th>
+                                
                             </tr>
+                            <?php
+                    if ($result->num_rows > 0) {
+                        // Output data of each row
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . $row["reg_no"] . "</td>";
+                            echo "<td>" . $row["veh_no"] . "</td>";
+                            echo "<td>" . $row["start_date"] . "</td>";
+                            echo "<td>" . $row["end_date"] . "</td>";
+                            echo "<td>" . $row["remarks"] . "</td>";
+                            
+                           
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='3'>No data found</td></tr>";
+                    }
+
+                    $conn->close();
+                    ?>
                             </tbody>
                         </table>
                     </div>

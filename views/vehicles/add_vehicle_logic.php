@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include 'connect.php';
+    include '../auth/connect.php';
 
     $reg_no = $_POST['reg_no']?$_POST['reg_no']:"";
     $veh_no = $_POST['veh_no'];
@@ -8,11 +8,7 @@
     $account_no = $_POST['account_no'];
     $device = $_POST['device'];
 
-    // $reg_no = "1900714";
-    // $veh_no = "12904339538";
-    // $device_sub = "393920294";
-    // $account_no = "39239050";
-    // $device = "Audi";
+    
 
     $sql ="INSERT INTO vehicles (reg_no,veh_no,device_sub,account_no,device)
     VALUES ('$reg_no','$veh_no','$device_sub','$account_no','$device')";

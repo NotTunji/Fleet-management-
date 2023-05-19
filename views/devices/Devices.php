@@ -17,6 +17,8 @@ $result = $conn->query($sql);
     <title>Website Homepage</title>
     <link rel="stylesheet" href="../../css/devices.css">
     <link rel="stylesheet" href="../../css/syle.css">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 
 </head>
 
@@ -38,15 +40,15 @@ $result = $conn->query($sql);
                         <span>Dashboard</span></a>
                 </li>
                 <li>
-                    <a href="../vehicles/vehicles.php"><span class="las la-users"></span>
+                    <a href="../vehicles/vehicles.php"><span class="las la-truck"></span>
                         <span>Vehicles</span></a>
                 </li>
                 <li>
-                    <a href="devices.php" class="active"><span class="las la-clipboard-list"></span>
+                    <a href="devices.php" class="active"><span class="las la-toolbox"></span>
                         <span>Devices</span></a>
                 </li>
                 <li>
-                    <a href="../trips.php"><span class="las la-clipboard-list"></span>
+                    <a href="../trips.php"><span class="las la-road"></span>
                         <span>Trips</span></a>
                 </li>
                 <li>
@@ -58,7 +60,7 @@ $result = $conn->query($sql);
                         <span>Vehicle Usage </span></a>
                 </li>
                 <li>
-                    <a href="../maintainance/maintainance.php"><span class="las la-clipboard-list"></span>
+                    <a href="../maintainance/maintainance.php"><span class="las la-user-edit"></span>
                         <span>Maintainance</span></a>
                 </li>
             </ul>

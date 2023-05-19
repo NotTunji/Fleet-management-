@@ -11,12 +11,7 @@
     $phone_num = $_POST['phone_num'];
     $installed_at = $_POST['installed_at'];
 
-    // $reg_no = "1900714";
-    // $vehicle = "12904339538";
-    // $account = "393920294";
-    // $type = "39239050";
-    // $status = "Audi";
-
+    
     $sql ="INSERT INTO devices (serial_num,vehicle,account,type,status,config_status,phone_num,installed_at)
     VALUES ('$serial_num','$vehicle','$account','$type','$status','$config_status','$phone_num','$installed_at')";
 

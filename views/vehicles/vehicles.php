@@ -1,34 +1,14 @@
 <?php
  session_start();
 
- include 'connect.php';
+ include '../auth/connect.php';
 
- $user = [];
+ $sql = "SELECT * FROM vehicles";
+$result = $conn->query($sql);
 
 
- $stmt = $conn->prepare('SELECT * FROM vehicles');
 
-//  $stmt->bind_param("ss",$username,$password);
- $stmt->execute();
- $result = $stmt->get_result();
-
- if($result->num_rows > 0)
- {
-    while($row = mysqli_fetch_assoc($result)) {
-      array_push($user,$row);
-      // $user = $result->fetch_assoc();
-
-    }
-     // echo "welcome ".$user["username"];
-    //  echo $user["reg_no"] ;
-    //  header("Location:Analytics.php");
- }
-
- else
- {
-     $user = [];
-
- } 
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,6 +18,8 @@
   <title>Website Homepage</title>
   <link rel="stylesheet" href="../../css/syle.css">
   <link rel="stylesheet" href="../../css/Vehicle.css">
+  <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
   <script defer src="../../JS/vehicles.js"></script>
 </head>
 
@@ -59,15 +41,15 @@
             <span>Dashboard</span></a>
         </li>
         <li>
-          <a href="./vehicles/vehicles.php" class="active"><span class="las la-users"></span>
+          <a href="./vehicles/vehicles.php" class="active"><span class="las la-truck"></span>
             <span>Vehicles</span></a>
         </li>
         <li>
-          <a href="../devices/devices.php"><span class="las la-clipboard-list"></span>
+          <a href="../devices/devices.php"><span class="las la-toolbox"></span>
             <span>Devices</span></a>
         </li>
         <li>
-          <a href="../trips.php"><span class="las la-clipboard-list"></span>
+          <a href="../trips.php"><span class="las la-road"></span>
             <span>Trips</span></a>
         </li>
         <li>
@@ -79,7 +61,7 @@
             <span>Vehicle Usage </span></a>
         </li>
         <li>
-          <a href="../maintainance/maintainance.php"><span class="las la-clipboard-list"></span>
+          <a href="../maintainance/maintainance.php"><span class="las la-user-edit"></span>
             <span>Maintainance</span></a>
         </li>
       </ul>
@@ -127,46 +109,26 @@
             <th>Device</th>
             <!-- <th>Vehicle Number</th> -->
           </tr>
-          <?php if (count($user)) {
-            // echo count($user);
-            for ($veh_count = 0; $veh_count << count($user); $veh_count++) {
-              echo "<tr>
-<td>" . $user[$veh_count]["reg_no"] . "</td>
-<td>" . $user[$veh_count]["veh_no"] . "</td>
-<td>" . $user[$veh_count]["device_sub"] . "</td>
-<td>" . $user[$veh_count]["account_no"] . "</td>
-<td>" . $user[$veh_count]["device"] . "</td>
-
-</tr> ";
+          <?php 
+           if ($result->num_rows > 0) {
+            // Output data of each row
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>" . $row["reg_no"] . "</td>";
+                echo "<td>" . $row["veh_no"] . "</td>";
+                echo "<td>" . $row["device_sub"] . "</td>";
+                echo "<td>" . $row["account_no"] . "</td>";
+                echo "<td>" . $row["device"] . "</td>";
+               
+                echo "</tr>";
             }
-          }
+        } else {
+            echo "<tr><td colspan='3'>No data found</td></tr>";
+        }
 
-          ?>
-
-          <!-- <tr>
-      <td>Row 2, Column 1</td>
-      <td>Row 2, Column 2</td>
-      <td>Row 2, Column 3</td>
-      <td>Row 2, Column 4</td>
-      <td>Row 2, Column 5</td>
-      <td>Row 2, Column 6</td>
-    </tr>
-    <tr>
-      <td>Row 3, Column 1</td>
-      <td>Row 3, Column 2</td>
-      <td>Row 3, Column 3</td>
-      <td>Row 3, Column 4</td>
-      <td>Row 3, Column 5</td>
-      <td>Row 3, Column 6</td>
-    </tr>
-    <tr>
-      <td>Row 4, Column 1</td>
-      <td>Row 4, Column 2</td>
-      <td>Row 4, Column 3</td>
-      <td>Row 4, Column 4</td>
-      <td>Row 4, Column 5</td>
-      <td>Row 4, Column 6</td>
-    </tr> -->
+        $conn->close();
+        ?>
+         
         </table>
       </div>
   </div>
