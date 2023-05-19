@@ -85,6 +85,7 @@
                   </div>
                 </div>
               </header>
+              <main>
               <div class="row">
                 <div class="col-lg-12">
                     <section class="panel" style="margin-bottom: 0px;">
@@ -109,3 +110,11 @@
                                 <th> Remarks</th>
                                 <th> Action</th>
                             </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+    </html>

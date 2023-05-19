@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include 'connect.php';
+    include '../auth/connect.php';
 
     $serial_num = $_POST['serial_num']?$_POST['serial_num']:"";
     $vehicle = $_POST['vehicle'];
