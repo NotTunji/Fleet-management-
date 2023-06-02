@@ -51,3 +51,15 @@ table {
     position:relative;
     border-top-right-radius:0%;
   }
+  .button-vehiclee {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #04AA6D;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  position:relative;
+  border-top-right-radius:0%;
+  justify-content: right;
+
+}

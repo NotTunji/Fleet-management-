@@ -88,7 +88,7 @@
             <div class="dropdown">
                 <ul>
                     <li><a href="settings.php">Settings</a></li>
-                    <li><a href="/auth/index.php">Logout</a></li>
+                    <li><a href="/auth/login.php">Logout</a></li>
 
                 </ul>
             </div>

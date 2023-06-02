@@ -60,7 +60,7 @@ $result = $conn->query($sql);
                         <span>Vehicle Usage </span></a>
                 </li>
                 <li>
-                    <a href="../maintainance/maintainance.php"><span class="las la-user-edit"></span>
+                    <a href="../maintainance/maintainance.php"><span class="las la-clipboard-list"></span>
                         <span>Maintainance</span></a>
                 </li>
             </ul>
@@ -88,7 +88,7 @@ $result = $conn->query($sql);
                     <div class="dropdown">
                         <ul>
                             <li><a href="settings.php">Settings</a></li>
-                            <li><a href="/auth/index.php">Logout</a></li>
+                            <li><a href="../auth/login.php">Logout</a></li>
 
                         </ul>
                     </div>
@@ -98,8 +98,11 @@ $result = $conn->query($sql);
             <div class="button-vehicle">
                 <a href="add_device.php" class="button">New Device</a>
             </div>
+             <div class="button-vehiclee">
+        <button onclick="exportTableToExcel('tablee', 'tableData')"  class="button-vehiclee" >EXPORT</button>
+      </div>
             <div class="table">
-                <table>
+                <table id="tablee">
                     <tr>
                         <th>Serial Number</th>
                         <th>Vehicle </th>
@@ -161,5 +164,38 @@ $result = $conn->query($sql);
 
 
 </body>
+<script>
+        function exportTableToExcel(tableID, filename = ''){
+            var downloadLink;
+            var dataType = 'application/vnd.ms-excel';
+            var tableSelect = document.getElementById(tableID);
+            var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+            // Specify the filename
+            filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+            // Create download link element
+            downloadLink = document.createElement("a");
+
+            document.body.appendChild(downloadLink);
+
+            if(navigator.msSaveOrOpenBlob){
+                var blob = new Blob(['\ufeff', tableHTML], {
+                    type: dataType
+                });
+                navigator.msSaveOrOpenBlob(blob, filename);
+            } else {
+                // Create a link to the file
+                downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+                // Setting the file name
+                downloadLink.download = filename;
+
+                //triggering the function
+                downloadLink.click();
+            }
+        }
+    </script>
+
 
 </html>

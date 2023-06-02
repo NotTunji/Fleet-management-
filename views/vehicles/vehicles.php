@@ -1,15 +1,3 @@
-<?php
- session_start();
-
- include '../auth/connect.php';
-
- $sql = "SELECT * FROM vehicles";
-$result = $conn->query($sql);
-
-
-
- 
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +7,7 @@ $result = $conn->query($sql);
   <link rel="stylesheet" href="../../css/syle.css">
   <link rel="stylesheet" href="../../css/Vehicle.css">
   <link rel="stylesheet"
-        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
   <script defer src="../../JS/vehicles.js"></script>
 </head>
 
@@ -98,9 +86,11 @@ $result = $conn->query($sql);
       <div class="button-vehicle">
         <a href="add_vehicle.php" class="button">New Vehicle</a>
       </div>
-
+      <div class="button-vehiclee">
+        <button onclick="exportTableToExcel('tablee', 'tableData')" class="button-vehiclee">EXPORT</button>
+      </div>
       <div class="table">
-        <table>
+        <table id="tablee">
           <tr>
             <th>Regstration Number</th>
             <th>Vehicle Number</th>
@@ -109,26 +99,33 @@ $result = $conn->query($sql);
             <th>Device</th>
             <!-- <th>Vehicle Number</th> -->
           </tr>
-          <?php 
-           if ($result->num_rows > 0) {
+          <?php
+          session_start();
+
+          include '../auth/connect.php';
+
+          $sql = "SELECT * FROM vehicles";
+          $result = $conn->query($sql);
+
+          if ($result->num_rows > 0) {
             // Output data of each row
             while ($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>" . $row["reg_no"] . "</td>";
-                echo "<td>" . $row["veh_no"] . "</td>";
-                echo "<td>" . $row["device_sub"] . "</td>";
-                echo "<td>" . $row["account_no"] . "</td>";
-                echo "<td>" . $row["device"] . "</td>";
-               
-                echo "</tr>";
-            }
-        } else {
-            echo "<tr><td colspan='3'>No data found</td></tr>";
-        }
+              echo "<tr>";
+              echo "<td><a href='vehdetails.php?reg_no=" . $row["reg_no"] . "'>" . $row['reg_no'] . "</a></td>";
+              echo "<td>" . $row["veh_no"] . "</td>";
+              echo "<td>" . $row["device_sub"] . "</td>";
+              echo "<td>" . $row["account_no"] . "</td>";
+              echo "<td>" . $row["device"] . "</td>";
 
-        $conn->close();
-        ?>
-         
+              echo "</tr>";
+            }
+          } else {
+            echo "<tr><td colspan='3'>No data found</td></tr>";
+          }
+
+          $conn->close();
+          ?>
+
         </table>
       </div>
   </div>
@@ -140,5 +137,38 @@ $result = $conn->query($sql);
 
   </main>
 </body>
+<script>
+  function exportTableToExcel(tableID, filename = '') {
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+    // Specify the filename
+    filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+    // Create download link element
+    downloadLink = document.createElement("a");
+
+    document.body.appendChild(downloadLink);
+
+    if (navigator.msSaveOrOpenBlob) {
+      var blob = new Blob(['\ufeff', tableHTML], {
+        type: dataType
+      });
+      navigator.msSaveOrOpenBlob(blob, filename);
+    } else {
+      // Create a link to the file
+      downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+      // Setting the file name
+      downloadLink.download = filename;
+
+      //triggering the function
+      downloadLink.click();
+    }
+  }
+</script>
+
 
 </html>
