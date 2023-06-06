@@ -1,7 +1,7 @@
 <?php 
     $dbServername = "localhost";
     $dbUsername = "root";
-    // $dbName = "cartrack";
+
     $dbPassword = "";
     $dbName = "project";
 

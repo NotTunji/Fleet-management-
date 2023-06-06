@@ -1,7 +1,8 @@
-/* 
-  table {
+
+table {
     border-collapse: collapse;
     width: 60%;
+    margin-top: 10px;
   }
   
   th, td {
@@ -17,29 +18,19 @@
   
   tr:nth-child(even) {
     background-color: #f2f2f2;
-  } */
+  }
 
   .vehicles_main
-{
+  {
   display: flex;
   flex-direction: column;
-}
-  .button-vehicle {
-    position:fixed; 
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    margin-left: 300px;
-    margin-top:30px ;
-    margin-bottom: 30px;
-    justify-content: right;
-    align-items: right;
-    float: right; 
-    margin-right: 60px;
-
   }
   
-  .button {
+  .panel-body {
+    color: black;
+  }
+  
+  .btn {
     display: inline-block;
     padding: 12px 24px;
     background-color: #04AA6D;
