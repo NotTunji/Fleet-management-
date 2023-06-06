@@ -13,13 +13,42 @@
   <div id="map"></div>
 
   <script>
-    function initMap() {
-      var location = {lat: 40.7128, lng: -74.0060}; // Example coordinates for New York City
-      var map = new google.maps.Map(document.getElementById('map'), {
-        center: location,
-        zoom: 12
-      });
-    }
+   let map;
+
+async function initMap() {
+  // The location of Uluru
+  const position = { lat: -25.344, lng: 131.031 };
+  // Request needed libraries.
+  //@ts-ignore
+  const { Map } = await google.maps.importLibrary("maps");
+  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+  // The map, centered at Uluru
+  map = new Map(document.getElementById("map"), {
+    zoom: 4,
+    center: position,
+    mapId: "DEMO_MAP_ID",
+  });
+
+  // Create a car icon
+  const carIcon = {
+    url: 'img/background.jpg', // Path to the car image file
+    scaledSize: new google.maps.Size(40, 40), // Adjust the size as needed
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(20, 20)
+  };
+
+  // The car marker, positioned at Uluru
+  const carMarker = new AdvancedMarkerElement({
+    map: map,
+    position: position,
+    icon: carIcon,
+    title: "Uluru",
+  });
+}
+
+initMap();
+
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDcWMz2uaG90XlTtaHixGvTK-vUyrwv8A&callback=initMap" async defer></script>
 </body>

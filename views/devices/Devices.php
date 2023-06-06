@@ -60,7 +60,7 @@ $result = $conn->query($sql);
                         <span>Vehicle Usage </span></a>
                 </li>
                 <li>
-                    <a href="../maintainance/maintainance.php"><span class="las la-clipboard-list"></span>
+                    <a href="../maintainance/maintainance.php"><span class="las la-user-edit"></span>
                         <span>Maintainance</span></a>
                 </li>
             </ul>

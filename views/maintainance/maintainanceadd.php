@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +19,7 @@
 
         <div class="card col-10">
             <div class="card-header">
-                <strong class="fs-4">Vehicle Maintainance</strong>
+                <strong class="fs-4">Vehicle Maintenance</strong>
             </div>
             <div class="card-body">
                 <!-- error message -->
@@ -54,18 +51,17 @@
                         <input id="textboxid" class="form-control fw-semibold" type="text" name="remarks"
                             placeholder="enter Remarks" />
                     </div>
-
-
-                    <div class="card-footer text-end">
-                        <button class="btn btn-secondary col-1">Cancel</button>
-                        <button class="btn btn-primary" type="submit">Send</button>
-                    </div>
                 </div>
             </div>
+            <div class="card-footer text-end">
+            <a class="btn btn-secondary col-1" href="maintainance.php">Cancel</a>
+
+                <button class="btn btn-primary" type="submit">Send</button>
+            </div>
+        </div>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
-        </script>
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 <style>
     body {

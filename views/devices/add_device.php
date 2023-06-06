@@ -80,7 +80,8 @@
 
 
           <div class="card-footer text-end">
-            <button class="btn btn-secondary col-1">Cancel</button>
+          <a class="btn btn-secondary col-1" href="Devices.php">Cancel</a>
+
             <button class="btn btn-primary" type="submit">Send</button>
           </div>
         </div>

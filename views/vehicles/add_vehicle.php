@@ -30,7 +30,7 @@
       <div class="row pb-3">
                     <div class="col-5">
                         <label for="reg_num" class="form-label fw-semibold">Registration Number</label>
-                        <input type="text" class="form-control fw-semibold" placeholder="enter registration number" id="cardNumber">
+                        <input type="text" name="reg_num" class="form-control fw-semibold" placeholder="enter registration number" id="cardNumber">
                     </div>
       <div class="col-4">
         <label class="form-label fw-semibold" for="veh_no">Vehicle number</label>
@@ -60,7 +60,8 @@
       </div>
 
        <div class="card-footer text-end">
-                <button class="btn btn-secondary col-1">Cancel</button>
+       <a class="btn btn-secondary col-1" href="vehicles.php">Cancel</a>
+
                 <button class="btn btn-primary" type="submit">Send</button>
             </div>
         </div>
