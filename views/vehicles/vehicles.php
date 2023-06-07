@@ -97,6 +97,7 @@
             <th>Device Subscription</th>
             <th>Account</th>
             <th>Device</th>
+            <th>Actions</th> 
             <!-- <th>Vehicle Number</th> -->
           </tr>
           <?php
@@ -116,11 +117,15 @@
               echo "<td>" . $row["device_sub"] . "</td>";
               echo "<td>" . $row["account_no"] . "</td>";
               echo "<td>" . $row["device"] . "</td>";
-
+                     // Added edit and delete buttons
+              echo "<td>";
+              echo "<a href='edit_vehicle.php?reg_no=" . $row["reg_no"] . "' class='action-button edit-button'>Edit</a>";
+              echo "<a href='delete_vehicle.php?reg_no=" . $row["reg_no"] . "' class='action-button delete-button'>Delete</a>";
+              echo "</td>";
               echo "</tr>";
             }
           } else {
-            echo "<tr><td colspan='3'>No data found</td></tr>";
+            echo "<tr><td colspan='6'>No data found</td></tr>";
           }
 
           $conn->close();
