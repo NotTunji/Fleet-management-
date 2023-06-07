@@ -3,29 +3,7 @@
 <head>
     <title>Vehicle Report</title>
     <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        .overused {
-            color: red;
-            font-weight: bold;
-        }
-
-        .underused {
-            color: green;
-            font-weight: bold;
-        }
+        
     </style>
 </head>
 <body>
