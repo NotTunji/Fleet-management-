@@ -6,7 +6,17 @@ include '../auth/connect.php';
 // SQL query to retrieve data
 $sql = "SELECT * FROM devices";
 $result = $conn->query($sql);
+function getStatusLabel($status)
+{
+    return $status == "active" ? "Active" : "Inactive";
+}
 
+function getConfigStatusLabel($configStatus)
+{
+    return $configStatus == "configured" ? "Configured" : "Not Configured";
+}
+
+?>
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +29,27 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="../../css/syle.css">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+        <style>
+        .Active {
+            background-color: green;
+            color: white;
+        }
 
+        .Inactive {
+            background-color: red;
+            color: white;
+        }
+
+        .Configured {
+            background-color: green;
+            color: white;
+        }
+
+        .NotConfigured {
+            background-color: red;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -122,8 +152,8 @@ $result = $conn->query($sql);
                             echo "<td>" . $row["vehicle"] . "</td>";
                             echo "<td>" . $row["account"] . "</td>";
                             echo "<td>" . $row["type"] . "</td>";
-                            echo "<td>" . $row["status"] . "</td>";
-                            echo "<td>" . $row["config_status"] . "</td>";
+                            echo "<td><span class='" . ($row["status"] == "Active" ? "Active" : "Inactive") . "'>" . $row["status"] . "</span></td>";
+                            echo "<td><span class='" . ($row["config_status"] == "Configured" ? "Configured" : "NotConfigured") . "'>" . $row["config_status"] . "</span></td>";
                             echo "<td>" . $row["phone_num"] . "</td>";
                             echo "<td>" . $row["installed_at"] . "</td>";
                             echo "</tr>";

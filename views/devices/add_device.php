@@ -56,16 +56,16 @@
             <label class="form-label fw-semibold" for="status">Status</label>
             <select class="form-control fw-semibold" name="status" id="status">
               <option value="">---select status---</option>
-              <option value="on">Active</option>
-              <option value="off">Inactive</option>
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
             </select>
           </div>
           <div class="col-4">
             <label class="form-label fw-semibold" for="config_status">Configuration status</label>
             <select class="form-control fw-semibold" name="config_status" id="config_status">
               <option value="">---select status---</option>
-              <option value="on">Configured</option>
-              <option value="off">Not Configured</option>
+              <option value="Configured">Configured</option>
+              <option value="NotConfigured">NotConfigured</option>
             </select>
           </div>
           <div class="col-3">

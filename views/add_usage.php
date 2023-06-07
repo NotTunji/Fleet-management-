@@ -46,11 +46,11 @@
           </div>
           <div id="pickup_date">
             <p><label for="start_date" class="form-label fw-semibold">Start Date:</label><input type="date"
-                class="form-control fw-semibold" id="pick_date" name="pickup_date" onchange="cal()"></p>
+                class="form-control fw-semibold" id="pick_date" name="start_date" onchange="cal()"></p>
           </div>
           <div id="dropoff_date">
             <p><label for="end_date" class="form-label fw-semibold">End Date:</label><input type="date"
-                class="form-control fw-semibold" id="drop_date" name="dropoff_date" onchange="cal()"></p>
+                class="form-control fw-semibold" id="drop_date" name="end_date" onchange="cal()"></p>
           </div>
           <div id="col">
             <label for="numdays" class="form-label fw-semibold">Number of days:</label><input type="text"
@@ -71,7 +71,7 @@
           </div>
           <div class="col">
             <label class="form-label fw-semibold" for="fuel_consumption">Fuel Consumption</label>
-            <input type="text" name="fuel" class="form-control fw-semibold" placeholder="enter Remarks" id="fuel">
+            <input type="text" name="fuel_consumption" class="form-control fw-semibold" placeholder="enter amount" id="fuel">
           </div>
           <div class="col-5">
             <label class="form-label fw-semibold" for="notes">Notes</label>

@@ -119,8 +119,8 @@
               echo "<td>" . $row["device"] . "</td>";
                      // Added edit and delete buttons
               echo "<td>";
-              echo "<a href='edit_vehicle.php?reg_no=" . $row["reg_no"] . "' class='action-button edit-button'>Edit</a>";
-              echo "<a href='delete_vehicle.php?reg_no=" . $row["reg_no"] . "' class='action-button delete-button'>Delete</a>";
+              echo "<a href='edit_vehicle.php?reg_no=" . $row["reg_no"] . "' class='las la-edit'></a>";
+              echo "<a href='delete_vehicle.php?reg_no=" . $row["reg_no"] . "' class='las la-trash'></a>";
               echo "</td>";
               echo "</tr>";
             }
