@@ -167,6 +167,7 @@
                 map,
                 icon: image,
             });
+            
 
             // Use Geocoding API to retrieve the address for the random location
             const geocoder = new google.maps.Geocoder();

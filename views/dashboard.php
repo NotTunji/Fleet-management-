@@ -17,6 +17,7 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
   <link rel="stylesheet" href="../css/syle.css">
   <link rel="stylesheet" href="../css/dashboard.css">
@@ -25,11 +26,13 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
     .fleet-statistics {
       margin-top: 20px;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
     }
 
     .fleet-statistics .statistic {
       text-align: center;
+      margin: o 10px;
+      flex-basis: 30%;
     }
 
     .fleet-statistics .statistic .count {
@@ -78,7 +81,7 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
     }
 
     #map-container {
-      width: 500px; /* Adjust the width as per your preference */
+      width: 600px; /* Adjust the width as per your preference */
       height: 400px; /* Adjust the height as per your preference */
     }
 
@@ -92,6 +95,20 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
     background-image: url(path/to/car.png); /* Replace path/to/car.png with the actual path to your car image */
     background-size: cover;
   }
+   #deviceChart {
+    width: 300px; /* Adjust the width as per your preference */
+    height: 200px; /* Adjust the height as per your preference */
+  }
+  #deviceChartContainer {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+    }
+    canvas#deviceChart {
+      width: 100%;
+      height: 100%;
+    }
+  
   </style>
 </head>
 
@@ -173,8 +190,68 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
     <div id="map-container">
       <div id="map"></div>
     </div>
-
+    <div id="deviceChartContainer">
+     <canvas id="deviceChart"></canvas>
+</div>
     <script>
+        <?php
+        $servername = 'localhost';
+        $username = 'root';
+        $password = '';
+        $dbname = 'project';
+
+        // Create a connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Check the connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Retrieve counts of active and inactive devices
+        $sql = "SELECT SUM(CASE WHEN status = 'Active' THEN 1 ELSE 0 END) AS activeDevices,
+                SUM(CASE WHEN status = 'Inactive' THEN 1 ELSE 0 END) AS inactiveDevices
+                FROM devices";
+
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $activeDevices = $row['activeDevices'];
+            $inactiveDevices = $row['inactiveDevices'];
+        } else {
+            $activeDevices = 0;
+            $inactiveDevices = 0;
+        }
+
+        $conn->close();
+        ?>
+
+        // Chart.js code
+        var ctx = document.getElementById('deviceChart').getContext('2d');
+        var deviceChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Active', 'Inactive'],
+                datasets: [{
+                    data: [<?php echo $activeDevices; ?>, <?php echo $inactiveDevices; ?>],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.7)', // Active devices color
+                        'rgba(255, 99, 132, 0.7)', // Inactive devices color
+                    ],
+                }],
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'bottom',
+                },
+                title: {
+                    display: true,
+                    text: 'Device Statistics',
+                },
+            },
+        });
       // Function to generate a random number between min and max (inclusive)
       function getRandomNumber(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
