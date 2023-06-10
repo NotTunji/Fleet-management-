@@ -12,14 +12,32 @@ $phone_num = $_POST['phone_num'];
 $installed_at = $_POST['installed_at'];
 
 
-$sql = "INSERT INTO devices (serial_num,vehicle,account,type,status,config_status,phone_num,installed_at)
-    VALUES ('$serial_num','$vehicle','$account','$type','$status','$config_status','$phone_num','$installed_at')";
 
 if ($serial_num != "") {
-  if (mysqli_query($conn, $sql)) {
-    echo "Device configured successfully";
+  // Check if the serial number already exists in the database
+  $stmt = $conn->prepare("SELECT COUNT(*) FROM devices WHERE serial_num = ?");
+  $stmt->bind_param('s', $serial_num);
+  $stmt->execute();
+  $stmt->bind_result($count);
+  $stmt->fetch();
+  $stmt->close();
+
+  if ($count > 0) {
+    // Serial number already exists, display a popup message
+    echo '<script>alert("Serial number already exists. Please choose a different serial number."); window.location.href = "' . $_SERVER['HTTP_REFERER'] . '";</script>';
+    exit;
   } else {
-    echo "Error: " . $sql . "<br>" . mysqli . error($conn);
+    // Serial number does not exist, insert the data into the database
+    $stmt = $conn->prepare("INSERT INTO devices (serial_num, vehicle, account, type, status, config_status, phone_num, installed_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('ssssssss', $serial_num, $vehicle, $account, $type, $status, $config_status, $phone_num, $installed_at);
+    
+    if ($stmt->execute()) {
+      echo 'Device configured successfully';
+    } else {
+      echo 'Error: ' . $stmt->error;
+    }
+
+    $stmt->close();
   }
 
   mysqli_close($conn);
@@ -27,5 +45,4 @@ if ($serial_num != "") {
 } else {
   header("Location: " . $_SERVER['HTTP_REFERER']);
 }
-
 ?>

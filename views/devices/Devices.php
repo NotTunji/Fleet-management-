@@ -6,6 +6,10 @@ include '../auth/connect.php';
 // SQL query to retrieve data
 $sql = "SELECT * FROM devices";
 $result = $conn->query($sql);
+
+// SQL query to retrieve data with connection status
+$sql = "SELECT devices.*, IFNULL(vehicles.reg_no, 'Not connected') AS vehicle_name FROM devices LEFT JOIN vehicles ON devices.vehicle_id = vehicles.id";
+$result = $conn->query($sql);
 function getStatusLabel($status)
 {
     return $status == "active" ? "Active" : "Inactive";
@@ -30,24 +34,39 @@ function getConfigStatusLabel($configStatus)
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
         <style>
+    /* Include the Fira Code font */
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
+    /* Use the Fira Code font for code elements */
+    code {
+      font-family: 'Fira Code', monospace;
+    }
+  </style>
+        <style>
         .Active {
-            background-color: green;
+            background-color:#04AA6D;
             color: white;
+            border-radius: 2px;
+            border: #04AA6D;
         }
 
         .Inactive {
-            background-color: red;
+            background-color: #ff3333;
             color: white;
+            border-radius: 2px;
         }
 
         .Configured {
-            background-color: green;
+            background-color: #04AA6D;
             color: white;
+            border-radius: 2px;
+            border: #04AA6D;
         }
 
         .NotConfigured {
-            background-color: red;
+            background-color: #ff3333;
             color: white;
+            border-radius: 2px;
         }
     </style>
 </head>
@@ -128,9 +147,9 @@ function getConfigStatusLabel($configStatus)
             <div class="button-vehicle">
                 <a href="add_device.php" class="button">New Device</a>
             </div>
-             <div class="button-vehiclee">
+          
         <button onclick="exportTableToExcel('tablee', 'tableData')"  class="button-vehiclee" >EXPORT</button>
-      </div>
+      
             <div class="table">
                 <table id="tablee">
                     <tr>
@@ -142,11 +161,16 @@ function getConfigStatusLabel($configStatus)
                         <th>Config Status</th>
                         <th>Phone Number</th>
                         <th>Installed At</th>
+                        <th>Actions</th>
                     </tr>
                     <?php
                     if ($result->num_rows > 0) {
                         // Output data of each row
                         while ($row = $result->fetch_assoc()) {
+                            $status = $row["status"];
+                            $configStatus = $row["config_status"];
+                            $statusLabel = getStatusLabel($status);
+                            $configStatusLabel = getConfigStatusLabel($configStatus);
                             echo "<tr>";
                             echo "<td>" . $row["serial_num"] . "</td>";
                             echo "<td>" . $row["vehicle"] . "</td>";
@@ -156,6 +180,9 @@ function getConfigStatusLabel($configStatus)
                             echo "<td><span class='" . ($row["config_status"] == "Configured" ? "Configured" : "NotConfigured") . "'>" . $row["config_status"] . "</span></td>";
                             echo "<td>" . $row["phone_num"] . "</td>";
                             echo "<td>" . $row["installed_at"] . "</td>";
+                            echo "<td>";
+                            echo "<a href='delete_device.php?serial_num=". $row["serial_num"] . "' onclick='return confirmDelete()' class='las la-trash'></a>";
+                            echo "</td>";
                             echo "</tr>";
                         }
                     } else {
@@ -225,6 +252,9 @@ function getConfigStatusLabel($configStatus)
                 downloadLink.click();
             }
         }
+        function confirmDelete() {
+        return confirm('Are you sure you want to delete this device?');
+    }
     </script>
 
 

@@ -49,11 +49,14 @@ th, td {
     font-size: 15px; /* Adjust the font size of table cells */
 }
 
+
 /* Rest of your CSS code */
 
 
         th {
-            background-color: #f2f2f2;
+           background-color: #04AA6D;
+           color: white;
+;
         }
 
         .overused {
@@ -72,9 +75,9 @@ th, td {
 
 /* .sidebar {
     /* Add a specific width to the sidebar to prevent it from overlapping the table */
-    width: 200px;
+    /* width: 200px; */
     /* Add more styles as per your requirements */
-}
+
 
 .main-content {
     /* Add padding to create space for the top bar */
@@ -137,7 +140,7 @@ th, td {
                 <label for="nav-toggle">
                     <span class="las la-bars"></span>
                 </label>
-                Dashboard
+                Report
             </h2>
             <div class="user-wrapper">
                 <img src="../img/userprofile.png" width="40px" height="40px" alt="" alt="User Profile">
@@ -154,7 +157,7 @@ th, td {
             </div>
         </header>
          
-        <button onclick="exportTableToExcel()" class="export-button">Export to Excel</button>
+       
         <?php
         // Establish database connection
         $conn = new mysqli("localhost", "root", "", "project"); // Replace DB_HOST, DB_USERNAME, DB_PASSWORD, and DB_NAME with your actual database credentials

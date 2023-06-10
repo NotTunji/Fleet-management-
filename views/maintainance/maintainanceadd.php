@@ -22,10 +22,7 @@
                 <strong class="fs-4">Vehicle Maintenance</strong>
             </div>
             <div class="card-body">
-                <!-- error message -->
-                <div class="alert alert-danger fw-semibold" role="alert">
-                    Some fields are missing
-                </div>
+               
 
                 <div class="row pb-3">
                     <div class="col-5">

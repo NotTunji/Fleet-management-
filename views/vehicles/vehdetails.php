@@ -2,6 +2,15 @@
 <html>
 <head>
 <style>
+  
+    /* Include the Fira Code font */
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
+    /* Use the Fira Code font for code elements */
+    code {
+      font-family: 'Fira Code', monospace;
+    }
+  
     html, body {
       height: 100%;
       margin: 0;
@@ -70,6 +79,9 @@
 
     .company-name:hover {
       background-color: #e6e6e6;
+    }
+    span{{
+      font-weight: bold;
     }
   </style>
 </head>

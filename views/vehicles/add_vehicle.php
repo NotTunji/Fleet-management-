@@ -1,6 +1,15 @@
 <?php
     
+    $conn = new mysqli("localhost", "root", "", "project"); // Replace DB_HOST, DB_USERNAME, DB_PASSWORD, and DB_NAME with your actual database credentials
 
+    // Check if the connection was successful
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
+  
+   // SQL query to retrieve serial numbers from the devices table that are not assigned to any vehicle
+   $sql = "SELECT serial_num FROM devices WHERE serial_num NOT IN (SELECT device FROM vehicles)";
+   $result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -24,9 +33,7 @@
             </div>
              <div class="card-body">
                 <!-- error message -->
-                <div class="alert alert-danger fw-semibold" role="alert">
-                    Some fields are missing
-                </div>
+               
       <div class="row pb-3">
                     <div class="col-5">
                         <label for="reg_num" class="form-label fw-semibold">Registration Number</label>
@@ -49,16 +56,21 @@
         <input type="text" name="account_no" class="form-control fw-semibold" placeholder="Account" />
       </div>
 
-      <div class="col-3" >
-        <label for="device" class="form-label fw-semibold">Device</label>
-        <select class="form-select" name="device" id="device">
-          <option value="">---pick a device---</option>
-          <option value="dev1">dev1</option>
-          <option value="dev2">dev2</option>
-          <option value="dev3">dev3</option>
-        </select>
+      <div class="col-3">
+          <label for="device" class="form-label fw-semibold">Device</label>
+          <select class="form-select" name="device" id="device">
+            <option value="">---pick a device---</option>
+            <?php
+              // Loop through the result set and populate the dropdown menu with serial numbers
+              if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                  echo '<option value="' . $row['serial_num'] . '">' . $row['serial_num'] . '</option>';
+                }
+              }
+            ?>
+          </select>
+        </div>
       </div>
-
        <div class="card-footer text-end">
        <a class="btn btn-secondary col-1" href="vehicles.php">Cancel</a>
 

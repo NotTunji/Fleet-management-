@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../../css/Vehicle.css">
   <link rel="stylesheet"
     href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-  <script defer src="../../JS/vehicles.js"></script>
+  <!-- <script defer src="../../JS/vehicles.js"></script> -->
 </head>
 
 <body>
@@ -86,9 +86,9 @@
       <div class="button-vehicle">
         <a href="add_vehicle.php" class="button">New Vehicle</a>
       </div>
-      <div class="button-vehiclee">
-        <button onclick="exportTableToExcel('tablee', 'tableData')" class="button-vehiclee">EXPORT</button>
-      </div>
+     
+        <button onclick="exportTableToExcel('tablee', 'tableData')"  >EXPORT</button>
+     
       <div class="table">
         <table id="tablee">
           <tr>
@@ -120,7 +120,7 @@
                      // Added edit and delete buttons
               echo "<td>";
               echo "<a href='edit_vehicle.php?reg_no=" . $row["reg_no"] . "' class='las la-edit'></a>";
-              echo "<a href='delete_vehicle.php?reg_no=" . $row["reg_no"] . "' class='las la-trash'></a>";
+              echo "<a href='delete_vehicle.php?reg_no=" . $row["reg_no"] . "' onclick='return confirmDelete()' class='las la-trash'></a>";
               echo "</td>";
               echo "</tr>";
             }
@@ -173,6 +173,9 @@
       downloadLink.click();
     }
   }
+  function confirmDelete() {
+        return confirm('Are you sure you want to delete this device?');
+    }
 </script>
 
 

@@ -23,90 +23,96 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
   <link rel="stylesheet" href="../css/dashboard.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <style>
-    .fleet-statistics {
-      margin-top: 20px;
-      display: flex;
-      justify-content: space-between;
-    }
+  .fleet-statistics {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
 
-    .fleet-statistics .statistic {
-      text-align: center;
-      margin: o 10px;
-      flex-basis: 30%;
-    }
+.fleet-statistics .statistic {
+  text-align: center;
+  margin: o 10px;
+  flex-basis: 30%;
+}
 
-    .fleet-statistics .statistic .count {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
+.fleet-statistics .statistic .count {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
 
-    .fleet-statistics .statistic .label {
-      font-size: 16px;
-      color: #888;
-    }
+.fleet-statistics .statistic .label {
+  font-size: 16px;
+  color: #888;
+}
 
-    .active-cars {
-      color: green;
-    }
+.active-cars {
+  color: green;
+}
 
-    .inactive-cars {
-      color: red;
-    }
+.inactive-cars {
+  color: red;
+}
 
-    .summary {
-      margin-top: 40px;
-    }
+.summary {
+  margin-top: 40px;
+}
 
-    .diagram {
-      margin-top: 40px;
-      text-align: center;
-    }
+.diagram {
+  margin-top: 40px;
+  text-align: center;
+}
 
-    .diagram img {
-      max-width: 400px;
-      height: auto;
-    }
+.diagram img {
+  max-width: 400px;
+  height: auto;
+}
 
-    html, body {
-      height: 100%;
-      margin: 0;
-    } 
+html, body {
+  height: 100%;
+  margin: 0;
+} 
 
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: Arial, sans-serif;
-    }
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+}
 
-    #map-container {
-      width: 600px; /* Adjust the width as per your preference */
-      height: 400px; /* Adjust the height as per your preference */
-    }
+#map-container {
+  width: 600px; /* Adjust the width as per your preference */
+  height: 400px; /* Adjust the height as per your preference */
+}
 
-    #map {
-      width: 100%;
-      height: 100%;
-    }
-    .car-marker {
-    width: 32px; /* Adjust the width as per your preference */
-    height: 32px; /* Adjust the height as per your preference */
-    background-image: url(path/to/car.png); /* Replace path/to/car.png with the actual path to your car image */
-    background-size: cover;
-  }
-   #deviceChart {
-    width: 300px; /* Adjust the width as per your preference */
-    height: 200px; /* Adjust the height as per your preference */
-  }
-  #deviceChartContainer {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-    }
-    canvas#deviceChart {
-      width: 100%;
-      height: 100%;
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+.car-marker {
+  width: 32px; /* Adjust the width as per your preference */
+  height: 32px; /* Adjust the height as per your preference */
+  background-image: url(path/to/car.png); /* Replace path/to/car.png with the actual path to your car image */
+  background-size: cover;
+}
+
+#deviceChart {
+  width: 300px; /* Adjust the width as per your preference */
+  height: 200px; /* Adjust the height as per your preference */
+}
+
+#deviceChartContainer {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+canvas#deviceChart {
+  width: 100%;
+  height: 100%;
+}
+
     }
   
   </style>
