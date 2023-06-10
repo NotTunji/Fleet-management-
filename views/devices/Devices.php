@@ -21,7 +21,6 @@ function getConfigStatusLabel($configStatus)
 }
 
 ?>
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -119,7 +118,7 @@ function getConfigStatusLabel($configStatus)
 
 
     </div>
-    <main>
+  
         <div class="main-content">
             <header>
                 <h2>
@@ -217,7 +216,7 @@ function getConfigStatusLabel($configStatus)
 
         </div>
 
-    </main>
+   
 
 
 </body>

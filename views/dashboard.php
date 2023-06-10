@@ -12,111 +12,129 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet"
+    href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/syle.css">
   <link rel="stylesheet" href="../css/dashboard.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <style>
-  .fleet-statistics {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.fleet-statistics .statistic {
-  text-align: center;
-  margin: o 10px;
-  flex-basis: 30%;
-}
-
-.fleet-statistics .statistic .count {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.fleet-statistics .statistic .label {
-  font-size: 16px;
-  color: #888;
-}
-
-.active-cars {
-  color: green;
-}
-
-.inactive-cars {
-  color: red;
-}
-
-.summary {
-  margin-top: 40px;
-}
-
-.diagram {
-  margin-top: 40px;
-  text-align: center;
-}
-
-.diagram img {
-  max-width: 400px;
-  height: auto;
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
-} 
-
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: Arial, sans-serif;
-}
-
-#map-container {
-  width: 600px; /* Adjust the width as per your preference */
-  height: 400px; /* Adjust the height as per your preference */
-}
-
-#map {
-  width: 100%;
-  height: 100%;
-}
-
-.car-marker {
-  width: 32px; /* Adjust the width as per your preference */
-  height: 32px; /* Adjust the height as per your preference */
-  background-image: url(path/to/car.png); /* Replace path/to/car.png with the actual path to your car image */
-  background-size: cover;
-}
-
-#deviceChart {
-  width: 300px; /* Adjust the width as per your preference */
-  height: 200px; /* Adjust the height as per your preference */
-}
-
-#deviceChartContainer {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-}
-
-canvas#deviceChart {
-  width: 100%;
-  height: 100%;
-}
-
-    }
-  
-  </style>
 </head>
+
+<style>
+  .fleet-statistics {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .fleet-statistics .statistic {
+    text-align: center;
+    margin: o 10px;
+    flex-basis: 30%;
+  }
+
+  .fleet-statistics .statistic .count {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .fleet-statistics .statistic .label {
+    font-size: 16px;
+    color: #888;
+  }
+
+  .active-cars {
+    color: green;
+  }
+
+  .inactive-cars {
+    color: red;
+  }
+
+  .summary {
+    margin-top: 40px;
+  }
+
+  .diagram {
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .diagram img {
+    max-width: 400px;
+    height: auto;
+  }
+
+  #map-container {
+    width: 600px;
+    /* Adjust the width as per your preference */
+    height: 400px;
+    /* Adjust the height as per your preference */
+  }
+
+  #map {
+    width: 100%;
+    height: 100%;
+  }
+
+  .car-marker {
+    width: 32px;
+    /* Adjust the width as per your preference */
+    height: 32px;
+    /* Adjust the height as per your preference */
+    background-image: url(path/to/car.png);
+    /* Replace path/to/car.png with the actual path to your car image */
+    background-size: cover;
+  }
+
+  #deviceChart {
+    width: 200px;
+    /* Adjust the width as per your preference */
+    height: 200px;
+    /* Adjust the height as per your preference */
+  }
+
+  #deviceChartContainer {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    /* background-color: red; */
+  }
+
+  canvas#deviceChart {
+    width: 200px;
+    height: 200px;
+  }
+
+
+  #deviceChart2 {
+    width: 200px;
+    /* Adjust the width as per your preference */
+    height: 200px;
+    /* Adjust the height as per your preference */
+  }
+
+  #deviceChartContainer2 {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    /* background-color: red; */
+
+  }
+
+  canvas#deviceChart2 {
+    width: 100%;
+    height: 100%;
+  }
+
+</style>
 
 <body>
   <input type='checkbox' id='nav-toggle'>
@@ -171,177 +189,238 @@ canvas#deviceChart {
         </label>
         Dashboard
       </h2>
+      <div class="user-wrapper">
+        <img src="../img/userprofile.png" width="40px" height="40px" alt="" alt="User Profile">
+        <div>
+          <h4>Jone Doe</h4>
+          <small>Super admin</small>
+        </div>
+
+        <!-- <div class="dropdown">
+          <ul>
+            <li><a href="settings.php">Settings</a></li>
+            <li><a href="/auth/index.php">Logout</a></li>
+
+          </ul>
+        </div> -->
+      </div>
     </header>
+    <main class="dashboard-main">
+      <section class="map-info-section">
+        <div id="map-container">
+          <div id="map"></div>
+        </div>
+        <div class="fleet-statistics">
+          <div class="statistic">
+            <div class="count" id="carCount">100</div>
+            <div class="label">Number of Cars</div>
+          </div>
+          <div class="statistic">
+            <div class="count active-cars" id="activeCarCount">75</div>
+            <div class="label">Active Cars</div>
+          </div>
+          <div class="statistic">
+            <div class="count inactive-cars" id="inactiveCarCount">25</div>
+            <div class="label">Inactive Cars</div>
+          </div>
+        </div>
+      </section>
+      <section class="class-section">
+        <div id="deviceChartContainer">
+          <canvas id="deviceChart"></canvas>
+        </div>
+        <div id="deviceChartContainer2">
+          <canvas id="deviceChart2"></canvas>
+        </div>
+      </section>
+      <main>
+  </div>
+  <script>
+    <?php
+    $servername = 'localhost';
+    $username = 'root';
+    $password = '';
+    $dbname = 'project';
 
-    <div class="fleet-statistics">
-      <div class="statistic">
-        <div class="count" id="carCount">100</div>
-        <div class="label">Number of Cars</div>
-      </div>
-      <div class="statistic">
-        <div class="count active-cars" id="activeCarCount">75</div>
-        <div class="label">Active Cars</div>
-      </div>
-      <div class="statistic">
-        <div class="count inactive-cars" id="inactiveCarCount">25</div>
-        <div class="label">Inactive Cars</div>
-      </div>
-    </div>
+    // Create a connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-    <!-- <div class="diagram">
-      <h2>Statistics Diagram</h2>
-      <img src="diagram.png" alt="Statistics Diagram">
-    </div> -->
+    // Check the connection
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
 
-    <div id="map-container">
-      <div id="map"></div>
-    </div>
-    <div id="deviceChartContainer">
-     <canvas id="deviceChart"></canvas>
-</div>
-    <script>
-        <?php
-        $servername = 'localhost';
-        $username = 'root';
-        $password = '';
-        $dbname = 'project';
-
-        // Create a connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check the connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        // Retrieve counts of active and inactive devices
-        $sql = "SELECT SUM(CASE WHEN status = 'Active' THEN 1 ELSE 0 END) AS activeDevices,
+    // Retrieve counts of active and inactive devices
+    $sql = "SELECT SUM(CASE WHEN status = 'Active' THEN 1 ELSE 0 END) AS activeDevices,
                 SUM(CASE WHEN status = 'Inactive' THEN 1 ELSE 0 END) AS inactiveDevices
                 FROM devices";
 
-        $result = $conn->query($sql);
+    $result = $conn->query($sql);
 
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $activeDevices = $row['activeDevices'];
-            $inactiveDevices = $row['inactiveDevices'];
-        } else {
-            $activeDevices = 0;
-            $inactiveDevices = 0;
-        }
+    if ($result->num_rows > 0) {
+      $row = $result->fetch_assoc();
+      $activeDevices = $row['activeDevices'];
+      $inactiveDevices = $row['inactiveDevices'];
+    } else {
+      $activeDevices = 0;
+      $inactiveDevices = 0;
+    }
+    // Retrieve counts of active and inactive devices
+    $consql = "SELECT SUM(CASE WHEN config_status = 'Configured' THEN 1 ELSE 0 END) AS connectedDevices,
+ SUM(CASE WHEN config_status = 'NotConfigured' THEN 1 ELSE 0 END) AS notConnectedDevices
+ FROM devices";
 
-        $conn->close();
-        ?>
+    $result = $conn->query($consql);
 
-        // Chart.js code
-        var ctx = document.getElementById('deviceChart').getContext('2d');
-        var deviceChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: ['Active', 'Inactive'],
-                datasets: [{
-                    data: [<?php echo $activeDevices; ?>, <?php echo $inactiveDevices; ?>],
-                    backgroundColor: [
-                        'rgba(54, 162, 235, 0.7)', // Active devices color
-                        'rgba(255, 99, 132, 0.7)', // Inactive devices color
-                    ],
-                }],
-            },
-            options: {
-                responsive: true,
-                legend: {
-                    position: 'bottom',
-                },
-                title: {
-                    display: true,
-                    text: 'Device Statistics',
-                },
-            },
-        });
-      // Function to generate a random number between min and max (inclusive)
-      function getRandomNumber(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-      }
+    if ($result->num_rows > 0) {
+      $row = $result->fetch_assoc();
+      $connectedDevices = $row['connectedDevices'];
+      $notConnectedDevices = $row['notConnectedDevices'];
+    } else {
+      $connectedDevices = 0;
+      $notConnectedDevices = 0;
+    }
+    $conn->close();
+    ?>
 
-      // Function to update the active and inactive car counts with random values
-      function updateCarCounts() {
-        var carCount = 100; // Total number of cars
-        var activeCarCount = getRandomNumber(0, carCount);
-        var inactiveCarCount = carCount - activeCarCount;
+    // Chart.js code
+    var ctx2 = document.getElementById('deviceChart2').getContext('2d');
+    var deviceChart2 = new Chart(ctx2, {
+      type: 'pie',
+      data: {
+        labels: ['Connected', 'NotConnected'],
+        datasets: [{
+          data: [<?php echo $connectedDevices; ?>, <?php echo $notConnectedDevices; ?>],
+          backgroundColor: [
+            'rgba(54, 162, 235, 0.7)', // Active devices color
+            'rgba(255, 99, 132, 0.7)', // Inactive devices color
+          ],
+        }],
+      },
+      options: {
+        responsive: true,
+        legend: {
+          position: 'bottom',
+        },
+        title: {
+          display: true,
+          text: 'Device Statistics',
+        },
+      },
+    });
+    var ctx = document.getElementById('deviceChart').getContext('2d');
+    var deviceChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Active', 'Inactive'],
+        datasets: [{
+          data: [<?php echo $activeDevices; ?>, <?php echo $inactiveDevices; ?>],
+          backgroundColor: [
+            'rgba(54, 162, 235, 0.7)', // Active devices color
+            'rgba(255, 99, 132, 0.7)', // Inactive devices color
+          ],
+        }],
+      },
+      options: {
+        responsive: true,
+        legend: {
+          position: 'bottom',
+        },
+        title: {
+          display: true,
+          text: 'Device Statistics',
+        },
+      },
+    });
+    // Function to generate a random number between min and max (inclusive)
+    function getRandomNumber(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
 
-        document.getElementById("carCount").textContent = carCount;
-        document.getElementById("activeCarCount").textContent = activeCarCount;
-        document.getElementById("inactiveCarCount").textContent = inactiveCarCount;
-      }
+    // Function to update the active and inactive car counts with random values
+    function updateCarCounts() {
+      var carCount = 100; // Total number of cars
+      var activeCarCount = getRandomNumber(0, carCount);
+      var inactiveCarCount = carCount - activeCarCount;
 
-      // Initial update
-      updateCarCounts();
+      document.getElementById("carCount").textContent = carCount;
+      document.getElementById("activeCarCount").textContent = activeCarCount;
+      document.getElementById("inactiveCarCount").textContent = inactiveCarCount;
+    }
 
-      // Update car counts every 5 seconds
-      setInterval(updateCarCounts, 5000);
-    </script>
+    // Initial update
+    updateCarCounts();
 
-    <script>
-      document.getElementById("profile-image").addEventListener("click", function() {
-        document.getElementById("dropdown-menu").classList.toggle("show");
+    // Update car counts every 5 seconds
+    setInterval(updateCarCounts, 5000);
+  </script>
+
+  <script>
+    document.getElementById("profile-image").addEventListener("click", function () {
+      document.getElementById("dropdown-menu").classList.toggle("show");
+    });
+  </script>
+
+  <script>
+    function initMap() {
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 12,
+        center: { lat: 6.5244, lng: 3.3792 }, // Lagos coordinates
       });
-    </script>
 
-    <script>
-      function initMap() {
-        const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 12,
-          center: { lat: 6.5244, lng: 3.3792 }, // Lagos coordinates
-        });
+      <?php
+      include 'auth/connect.php';
 
-        <?php
-          include 'auth/connect.php';
+      $sql = "SELECT reg_no, veh_no FROM vehicles";
+      $result = $conn->query($sql);
 
-          $sql = "SELECT reg_no, veh_no FROM vehicles";
-          $result = $conn->query($sql);
+      if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+          $reg_no = $row['reg_no'];
+          $veh_no = $row['veh_no'];
 
-          if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-              $reg_no = $row['reg_no'];
-              $veh_no = $row['veh_no'];
-  
-              // Generate random latitude and longitude within Lagos boundaries
-              $latMin = 6.3932;
-              $latMax = 6.7028;
-              $lngMin = 3.0894;
-              $lngMax = 4.3517;
-  
-              $lat = mt_rand() / mt_getrandmax() * ($latMax - $latMin) + $latMin;
-              $lng = mt_rand() / mt_getrandmax() * ($lngMax - $lngMin) + $lngMin;
-        ?>
-  
-        const marker<?php echo $reg_no; ?> = new google.maps.Marker({
-          position: { lat: <?php echo $lat; ?>, lng: <?php echo $lng; ?> },
-          map: map,
-          label: "<?php echo $veh_no; ?>",
-          icon: {
-        url: '../img/car.jpeg', // Replace 'car.png' with the actual path to your car image
-        scaledSize: new google.maps.Size(32, 32), // Adjust the size as per your preference
-        anchor: new google.maps.Point(16, 16) // Adjust the anchor point as per your preference
-      }
-        });
-  
-        <?php
+          // Generate random latitude and longitude within Lagos boundaries
+          $latMin = 6.3932;
+          $latMax = 6.7028;
+          $lngMin = 3.0894;
+          $lngMax = 4.3517;
+
+          $lat = mt_rand() / mt_getrandmax() * ($latMax - $latMin) + $latMin;
+          $lng = mt_rand() / mt_getrandmax() * ($lngMax - $lngMin) + $lngMin;
+          ?>
+
+          const marker<?php echo $reg_no; ?> = new google.maps.Marker({
+            position: { lat: <?php echo $lat; ?>, lng: <?php echo $lng; ?> },
+            map: map,
+            label: "<?php echo $veh_no; ?>",
+            icon: {
+              url: '../img/car.jpeg', // Replace 'car.png' with the actual path to your car image
+              scaledSize: new google.maps.Size(32, 32), // Adjust the size as per your preference
+              anchor: new google.maps.Point(16, 16) // Adjust the anchor point as per your preference
             }
-          }
-  
-          $conn->close();
-        ?>
-      }
-  
-      window.initMap = initMap;
-    </script>
-  
+          });
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDcWMz2uaG90XlTtaHixGvTK-vUyrwv8A&callback=initMap" async defer></script>
+          <?php
+        }
+      }
+
+      $conn->close();
+      ?>
+    }
+
+    window.initMap = initMap;
+  </script>
+
+
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDcWMz2uaG90XlTtaHixGvTK-vUyrwv8A&callback=initMap"
+    async defer></script>
+  </div> -->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDcWMz2uaG90XlTtaHixGvTK-vUyrwv8A&callback=initMap"></script>
   </div>
 
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <script src="../js/dashboard.js"></script>
+  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
+  <!-- <script src="../js/dashboard.js"></script> -->
 </body>
+
 </html>

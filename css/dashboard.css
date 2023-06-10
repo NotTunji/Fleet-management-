@@ -42,8 +42,13 @@
 
 /* CSS to center the boxes */
 .main-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
+  overflow: hidden;
 }
+
+  .dashboard-main{
+    display: flex;
+    align-items: center;  
+    justify-content: space-between;
+    gap:2em;
+  }
