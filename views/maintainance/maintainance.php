@@ -120,7 +120,7 @@ $result = $conn->query($sql);
                             <tr>
 
                                 <th> Registration number</th>
-                                <th>Vehicle Number</th>
+                                <th>Vehicle </th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th> Remarks</th>

@@ -1,3 +1,16 @@
+<?php
+    $conn = new mysqli("localhost", "root", "", "project"); // Replace DB_HOST, DB_USERNAME, DB_PASSWORD, and DB_NAME with your actual database credentials
+
+    // Check if the connection was successful
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // SQL query to retrieve registration numbers from the vehicles table
+    $sql = "SELECT reg_no, veh_no FROM vehicles";
+    $result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,41 +35,67 @@
                 <strong class="fs-4">Vehicle Maintenance</strong>
             </div>
             <div class="card-body">
-               
-
                 <div class="row pb-3">
                     <div class="col-5">
                         <label class="form-label fw-semibold" for="reg_num">Registration Number</label>
-                        <input type="text" class="form-control fw-semibold" name="reg_num"
-                            placeholder="enter registration number" />
+                        <select type="text" class="form-control fw-semibold" name="reg_num" id="reg_num">
+                            <option value="">---pick a vehicle---</option>
+                            <?php
+                            // Loop through the result set and populate the dropdown menu with registration numbers
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    echo '<option value="' . $row['reg_no'] . '">' . $row['reg_no'] . '</option>';
+                                }
+                            }
+                            ?>
+                        </select>
                     </div>
                     <div class="col-5">
                         <label class="form-label fw-semibold" for="veh_num">Vehicle Number</label>
-                        <input type="text" class="form-control fw-semibold" name="veh_num"
-                            placeholder="enter vehicle number" />
+                        <input type="text" class="form-control fw-semibold" name="veh_num" id="veh_num"
+                            placeholder="enter vehicle number" readonly>
                     </div>
                     <div class="col-4">
                         <label class="form-label fw-semibold" for="start_date">Maintenance start date</label>
-                        <input type="date" class="form-control fw-semibold" name="start_date" />
+                        <input type="date" class="form-control fw-semibold" name="start_date">
                     </div>
                     <div class="col-4">
                         <label class="form-label fw-semibold" for="end_date">Maintenance end date</label>
-                        <input type="date" class="form-control fw-semibold" name="end_date" />
+                        <input type="date" class="form-control fw-semibold" name="end_date">
                     </div>
                     <div class="col d-flex flex-column">
                         <label class="form-label fw-semibold" for="remarks">Remarks</label>
                         <input id="textboxid" class="form-control fw-semibold" type="text" name="remarks"
-                            placeholder="enter Remarks" />
+                            placeholder="enter Remarks">
                     </div>
                 </div>
             </div>
             <div class="card-footer text-end">
-            <a class="btn btn-secondary col-1" href="maintainance.php">Cancel</a>
+                <a class="btn btn-secondary col-1" href="maintainance.php">Cancel</a>
 
                 <button class="btn btn-primary" type="submit">Send</button>
             </div>
         </div>
     </form>
+
+    <script>
+        // Retrieve the selected registration number and populate the vehicle number field
+        document.getElementById('reg_num').addEventListener('change', function () {
+            var selectedRegNum = this.value;
+            var vehicleNumberField = document.getElementById('veh_num');
+
+            // Fetch the vehicle number from the database based on the selected registration number
+            fetch('get_vehicle_number.php?reg_num=' + selectedRegNum)
+                .then(response => response.text())
+                .then(data => {
+                    vehicleNumberField.value = data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>

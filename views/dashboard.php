@@ -133,6 +133,13 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
     width: 100%;
     height: 100%;
   }
+  .car-marker {
+  width: 32px;
+  height: 32px;
+  background-image: url(path/to/car.png); /* Replace path/to/car.png with the actual path to your car image */
+  background-size: cover;
+}
+
 
 </style>
 
@@ -389,16 +396,17 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
           $lng = mt_rand() / mt_getrandmax() * ($lngMax - $lngMin) + $lngMin;
           ?>
 
-          const marker<?php echo $reg_no; ?> = new google.maps.Marker({
-            position: { lat: <?php echo $lat; ?>, lng: <?php echo $lng; ?> },
-            map: map,
-            label: "<?php echo $veh_no; ?>",
-            icon: {
-              url: '../img/car.jpeg', // Replace 'car.png' with the actual path to your car image
-              scaledSize: new google.maps.Size(32, 32), // Adjust the size as per your preference
-              anchor: new google.maps.Point(16, 16) // Adjust the anchor point as per your preference
-            }
-          });
+const marker<?php echo $reg_no; ?> = new google.maps.Marker({
+  position: { lat: <?php echo $lat; ?>, lng: <?php echo $lng; ?> },
+  map: map,
+  label: "<?php echo $veh_no; ?>",
+  icon: {
+    url: '../img/car.jpeg', // Replace path/to/car.png with the actual path to your car image
+    scaledSize: new google.maps.Size(32, 32), // Adjust the size as per your preference
+    anchor: new google.maps.Point(16, 16) // Adjust the anchor point as per your preference
+  }
+});
+
 
           <?php
         }
@@ -406,6 +414,7 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
 
       $conn->close();
       ?>
+       google.maps.event.trigger(map, "resize");
     }
 
     window.initMap = initMap;

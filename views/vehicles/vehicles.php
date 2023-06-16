@@ -93,7 +93,7 @@
         <table id="tablee">
           <tr>
             <th>Regstration Number</th>
-            <th>Vehicle Number</th>
+            <th>Vehicle </th>
             <th>Device Subscription</th>
             <th>Account</th>
             <th>Device</th>
