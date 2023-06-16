@@ -235,7 +235,7 @@ img {
   background: #000;
 }
 
-table {
+ table {
   border-collapse: collapse;
 }
 
@@ -246,9 +246,9 @@ table tr {
 
 table th {
   font-weight: 700;
-}
+} 
 
-td {
+ td {
   padding: .5rem 1rem;
   font-size: .9rem;
   color: #222;
@@ -261,13 +261,23 @@ td .status {
   display: inline-block;
   margin-right: 1rem;
 }
+.overused {
+  color: red;
+  font-weight: bold;
+}
+
+.underused {
+  color: green;
+  font-weight: bold;
+}
+
 
 tr td:last-child {
   display: flex;
   align-items: center;
-}
+} 
 
-.status.purple {
+ .status.purple {
   background: rebeccapurple;
 }
 

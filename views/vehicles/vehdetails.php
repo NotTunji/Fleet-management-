@@ -31,7 +31,7 @@
     .box {
       border: 1px solid #ccc;
       padding: 10px;
-      background-color: #04AA6D;
+      background-color: ;
     }
 
     .box1 {
@@ -80,7 +80,7 @@
     .company-name:hover {
       background-color: #e6e6e6;
     }
-    span{{
+    span{
       font-weight: bold;
     }
   </style>

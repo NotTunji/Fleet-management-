@@ -11,52 +11,46 @@
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 
     <style>
+        .table-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            border-collapse: collapse;
+            width: 60%;
+            margin-top: 10px;
+            height: 100vh;
+            padding-top: 50px;
+        }
 
-.table-container {
-    display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        border-collapse: collapse;
-    width: 60%;
-    margin-top: 10px;
-    height: 100vh; /* Adjust the height as needed */
-        padding-top: 50px;
-    }
+        /* CSS styles for the Export button */
+        .export-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #04AA6D;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            position: relative;
+            border-top-right-radius: 0%;
+        }
 
-    /* CSS styles for the Export button */
-    .export-button {
-      display: inline-block;
-    padding: 12px 24px;
-    background-color: #04AA6D;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    position:relative;
-    border-top-right-radius:0%;
-    } 
-       table {
-    border-collapse: collapse;
-    margin: 70px auto; /* Add margin and set auto for horizontal centering */
-    width: 90%; /* Reduce the width of the table */
-    margin-top: 50px;
-    
-}
+        table {
+            border-collapse: collapse;
+            margin: 70px auto;
+            width: 90%;
+            margin-top: 50px;
+        }
 
-th, td {
-    border: 1px solid black;
-    padding: 8px;
-    font-size: 15px; /* Adjust the font size of table cells */
-}
-
-
-/* Rest of your CSS code */
-
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            font-size: 15px;
+        }
 
         th {
-           background-color: #04AA6D;
-           color: white;
-;
+            background-color: #04AA6D;
+            color: white;
         }
 
         .overused {
@@ -68,23 +62,21 @@ th, td {
             color: green;
             font-weight: bold;
         }
-        table {
-    border-collapse: collapse;
-    margin: 50px auto; /* Add margin and set auto for horizontal centering */
-}
 
-/* .sidebar {
+
+        /* .sidebar {
     /* Add a specific width to the sidebar to prevent it from overlapping the table */
-    /* width: 200px; */
-    /* Add more styles as per your requirements */
+        /* width: 200px; */
+        /* Add more styles as per your requirements */
 
 
-.main-content {
-    /* Add padding to create space for the top bar */
-    padding-top: 60px;
-    /* Add more styles as per your requirements */
-} */
+        .main-content {
+            /* Add padding to create space for the top bar */
+            padding-top: 60px;
+            /* Add more styles as per your requirements */
+        }
 
+        */
     </style>
 </head>
 
@@ -135,7 +127,7 @@ th, td {
 
     <div class="main-content">
         <header>
-       
+
             <h2>
                 <label for="nav-toggle">
                     <span class="las la-bars"></span>
@@ -156,11 +148,11 @@ th, td {
                 </div>
             </div>
         </header>
-         
-       
+
+
         <?php
         // Establish database connection
-        $conn = new mysqli("localhost", "root", "", "project"); // Replace DB_HOST, DB_USERNAME, DB_PASSWORD, and DB_NAME with your actual database credentials
+        $conn = new mysqli("localhost", "root", "", "project");
 
         // Check if the connection was successful
         if ($conn->connect_error) {
@@ -189,13 +181,13 @@ th, td {
                 $numDays = $row['numdays'];
                 $driver = $row['driver'];
 
-                  // Add a CSS class to highlight overused and underused vehicles
-            $cssClass = '';
-            if ($numDays > 10) {
-                $cssClass = 'overused';
-            } elseif ($numDays <= 10) {
-                $cssClass = 'underused';
-            }
+                // Add a CSS class to highlight overused and underused vehicles
+                $cssClass = '';
+                if ($numDays > 10) {
+                    $cssClass = 'overused';
+                } elseif ($numDays <= 10) {
+                    $cssClass = 'underused';
+                }
 
                 // Generate table rows with the retrieved data
                 echo '<tr class="' . $cssClass . '">';
@@ -211,11 +203,12 @@ th, td {
             echo '<p>No data found</p>';
         }
 
+
         // Close the database connection
         $conn->close();
         ?>
- <button onclick="exportTableToExcel()" class="export-button">Export to Excel</button>
-       
+        <button onclick="exportTableToExcel()" class="export-button">Export to Excel</button>
+
         <script>
             function exportTableToExcel() {
                 var table = document.getElementsByTagName("table")[0];

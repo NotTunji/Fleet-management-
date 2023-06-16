@@ -8,8 +8,7 @@ $sql = "SELECT * FROM devices";
 $result = $conn->query($sql);
 
 // SQL query to retrieve data with connection status
-$sql = "SELECT devices.*, IFNULL(vehicles.reg_no, 'Not connected') AS vehicle_name FROM devices LEFT JOIN vehicles ON devices.vehicle_id = vehicles.id";
-$result = $conn->query($sql);
+
 function getStatusLabel($status)
 {
     return $status == "active" ? "Active" : "Inactive";
