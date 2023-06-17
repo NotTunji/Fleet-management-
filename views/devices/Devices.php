@@ -66,6 +66,37 @@ function getConfigStatusLabel($configStatus)
             color: white;
             border-radius: 2px;
         }
+        th, td {
+      border: 1px solid black;
+      padding: 8px;
+      font-size: 15px;
+      text-align: center;
+    }
+    .dropdown {
+            position: relative;
+            display: inline-block;
+            padding: 0px 45px;
+            left: 510px;
+
+        }
+
+        .dropdown.right {
+            right: 4;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 160px;
+            padding: 2px;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
     </style>
 </head>
 
@@ -126,20 +157,22 @@ function getConfigStatusLabel($configStatus)
                     </label>
                     Devices
                 </h2>
-                <div class="user-wrapper">
-                    <img src="../../img/userprofile.png" width="40px" height="40px" alt="" alt="User Profile">
-                    <div>
-                        <h4>Jone Doe</h4>
-                        <small>Super admin</small>
-                    </div>
-                    <div class="dropdown">
-                        <ul>
-                            <li><a href="settings.php">Settings</a></li>
-                            <li><a href="../auth/login.php">Logout</a></li>
-
-                        </ul>
-                    </div>
+                <div class="dropdown">
+                <img src="../../img/userprofile.png" width="40px" height="40px" alt="Dropdown Image"
+                    onclick="toggleDropdown()">
+                <div id="dropdownContent" class="dropdown-content">
+                    <a href="#">setting</a>
+                    <a href="#">Logout</a>
                 </div>
+
+
+
+            </div>
+            <div>
+                <h4>Tunji</h4>
+                <small>Super admin</small>
+            </div>
+
             </header>
 
             <div class="button-vehicle">
@@ -152,7 +185,7 @@ function getConfigStatusLabel($configStatus)
                 <table id="tablee">
                     <tr>
                         <th>Serial Number</th>
-                        <th>Vehicle </th>
+                        <!-- <th>Vehicle </th> -->
                         <th>Account</th>
                         <th>Type</th>
                         <th>Status</th>
@@ -171,7 +204,7 @@ function getConfigStatusLabel($configStatus)
                             $configStatusLabel = getConfigStatusLabel($configStatus);
                             echo "<tr>";
                             echo "<td>" . $row["serial_num"] . "</td>";
-                            echo "<td>" . $row["vehicle"] . "</td>";
+                            // echo "<td>" . $row["vehicle"] . "</td>";
                             echo "<td>" . $row["account"] . "</td>";
                             echo "<td>" . $row["type"] . "</td>";
                             echo "<td><span class='" . ($row["status"] == "Active" ? "Active" : "Inactive") . "'>" . $row["status"] . "</span></td>";
@@ -193,23 +226,7 @@ function getConfigStatusLabel($configStatus)
             </div>
         </div>
 
-        <?php
-        // if(count($user))
-        //         {
-        //           for($dev_count=0;$dev_count << count($user);$dev_count++){
-        //   echo  "<tr>
-        //   <td>".$user[$dev_count]["serial_num"]."</td>
-        //   <td>".$user[$dev_count]["vehicle"]."</td>
-        //   <td>".$user[$dev_count]["account"]."</td>
-        //   <td>".$user[$dev_count]["type"]."</td>
-        //   <td>".$user[$dev_count]["status"]."</td>
-        //   <td>".$user[$dev_count]["config_status"]."</td>
-        //   <td>".$user[$dev_count]["phone_num"]."</td>
-        //   <td>".$user[$dev_count]["installed_at"]."</td>
-        // </tr>";
-        //           }
-        //         }
-        ?>
+      
 
 
 
@@ -219,6 +236,16 @@ function getConfigStatusLabel($configStatus)
 
 
 </body>
+<script>
+            function toggleDropdown() {
+                var dropdownContent = document.getElementById("dropdownContent");
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            }
+        </script>
 <script>
         function exportTableToExcel(tableID, filename = ''){
             var downloadLink;

@@ -20,6 +20,39 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="../css/vehicle_usage.css">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+      <style>
+        th, td {
+      border: 1px solid black;
+      padding: 8px;
+      font-size: 15px;
+      text-align: center;
+    }
+    .dropdown {
+            position: relative;
+            display: inline-block;
+            padding: 0px 45px;
+            left: 510px;
+
+        }
+
+        .dropdown.right {
+            right: 4;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 160px;
+            padding: 2px;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+</style>
 </head>
 
 <body>
@@ -70,26 +103,26 @@ $result = $conn->query($sql);
     </div>
     <div class="main-content">
         <header>
-            <h2>
+        <h2>
                 <label for="nav-toggle">
                     <span class="las la-bars"></span>
                 </label>
-                Vehicle Usage
+                Report
             </h2>
-            <div class="user-wrapper">
-                <img src="../img/userprofile.png" width="40px" height="40px" alt="" alt="User Profile">
-                <div>
-                    <h4>Jone Doe</h4>
-                    <small>Super admin</small>
+            <div class="dropdown">
+                <img src="../img/userprofile.png" width="40px" height="40px" alt="Dropdown Image"
+                    onclick="toggleDropdown()">
+                <div id="dropdownContent" class="dropdown-content">
+                    <a href="#">setting</a>
+                    <a href="#">Logout</a>
                 </div>
-                <div class="dropdown">
-                    <ul>
-                        <li><a href="settings.html">Settings</a></li>
-                        <li><a href="/auth/index.php">Logout</a></li>
 
 
-                    </ul>
-                </div>
+
+            </div>
+            <div>
+                <h4>Tunji</h4>
+                <small>Super admin</small>
             </div>
         </header>
         <main>
@@ -142,6 +175,16 @@ $result = $conn->query($sql);
                     <body>
         </main>
 </body>
+<script>
+            function toggleDropdown() {
+                var dropdownContent = document.getElementById("dropdownContent");
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            }
+        </script>
 <script>
         function exportTableToExcel(tableID, filename = ''){
             var downloadLink;

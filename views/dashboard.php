@@ -139,6 +139,31 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
   background-image: url(path/to/car.png); /* Replace path/to/car.png with the actual path to your car image */
   background-size: cover;
 }
+.dropdown {
+            position: relative;
+            display: inline-block;
+            padding: 0px 45px;
+            left: 510px;
+
+        }
+
+        .dropdown.right {
+            right: 4;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 160px;
+            padding: 2px;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
 
 
 </style>
@@ -190,27 +215,27 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
 
   <div class="main-content">
     <header>
-      <h2>
-        <label for="nav-toggle">
-          <span class="las la-bars"></span>
-        </label>
-        Dashboard
-      </h2>
-      <div class="user-wrapper">
-        <img src="../img/userprofile.png" width="40px" height="40px" alt="" alt="User Profile">
-        <div>
-          <h4>Jone Doe</h4>
-          <small>Super admin</small>
-        </div>
+    <h2>
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+                Report
+            </h2>
+            <div class="dropdown">
+                <img src="../img/userprofile.png" width="40px" height="40px" alt="Dropdown Image"
+                    onclick="toggleDropdown()">
+                <div id="dropdownContent" class="dropdown-content">
+                    <a href="#">setting</a>
+                    <a href="#">Logout</a>
+                </div>
 
-        <!-- <div class="dropdown">
-          <ul>
-            <li><a href="settings.php">Settings</a></li>
-            <li><a href="/auth/index.php">Logout</a></li>
 
-          </ul>
-        </div> -->
-      </div>
+
+            </div>
+            <div>
+                <h4>Tunji</h4>
+                <small>Super admin</small>
+            </div>
     </header>
     <main class="dashboard-main">
       <section class="map-info-section">
@@ -367,7 +392,16 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
       document.getElementById("dropdown-menu").classList.toggle("show");
     });
   </script>
-
+<script>
+            function toggleDropdown() {
+                var dropdownContent = document.getElementById("dropdownContent");
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            }
+        </script>
   <script>
     function initMap() {
       const map = new google.maps.Map(document.getElementById("map"), {

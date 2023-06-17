@@ -40,7 +40,7 @@
                         <input type="text" name="reg_num" class="form-control fw-semibold" placeholder="enter registration number" id="cardNumber">
                     </div>
       <div class="col-4">
-        <label class="form-label fw-semibold" for="veh_no">Vehicle number</label>
+        <label class="form-label fw-semibold" for="veh_no">Vehicle </label>
         <input type="text" name="veh_no" class="form-control fw-semibold" placeholder="Vehicle num" />
       </div>
       <div class="col">

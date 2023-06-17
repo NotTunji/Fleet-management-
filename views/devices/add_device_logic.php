@@ -3,7 +3,7 @@ session_start();
 include '../auth/connect.php';
 
 $serial_num = $_POST['serial_num'] ? $_POST['serial_num'] : "";
-$vehicle = $_POST['vehicle'];
+// $vehicle = $_POST['vehicle'];
 $account = $_POST['account'];
 $type = $_POST['type'];
 $status = $_POST['status'];
@@ -28,8 +28,8 @@ if ($serial_num != "") {
     exit;
   } else {
     // Serial number does not exist, insert the data into the database
-    $stmt = $conn->prepare("INSERT INTO devices (serial_num, vehicle, account, type, status, config_status, phone_num, installed_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('ssssssss', $serial_num, $vehicle, $account, $type, $status, $config_status, $phone_num, $installed_at);
+    $stmt = $conn->prepare("INSERT INTO devices (serial_num,  account, type, status, config_status, phone_num, installed_at) VALUES (?,  ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssssss', $serial_num, $account, $type, $status, $config_status, $phone_num, $installed_at);
     
     if ($stmt->execute()) {
       echo 'Device configured successfully';

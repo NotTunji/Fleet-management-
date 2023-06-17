@@ -29,10 +29,10 @@
             <label for="serial_num" class="form-label fw-semibold">Serial number</label>
             <input type="text" class="form-control fw-semibold" name="serial_num" placeholder="enter number" />
           </div>
-          <div class="col-5">
+          <!-- <div class="col-5">
             <label class="form-label fw-semibold" for="vehicle">Vehicle</label>
             <input type="text" class="form-control fw-semibold" name="vehicle" placeholder="enter vehicle" />
-          </div>
+          </div> -->
           <div>
             <label class="form-label fw-semibold" for="account">Account</label>
             <input type="text" class="form-control fw-semibold" name="account" placeholder="enter account" />
@@ -41,11 +41,11 @@
             <label class="form-label fw-semibold" for="type">Device type</label>
             <select class="form-control fw-semibold" name="type" id="type">
               <option value="">---pick a device---</option>
-              <option value="dev1">FMB 920</option>
-              <option value="dev2">WETRACK 2</option>
-              <option value="dev3">SinoTrack</option>
-              <option value="dev3">SALIND</option>
-              <option value="dev3">Optimus 2.0</option>
+              <option value="FMB 920">FMB 920</option>
+              <option value="WETRACK 2">WETRACK 2</option>
+              <option value="SinoTrack">SinoTrack</option>
+              <option value="SALIND">SALIND</option>
+              <option value="Optimus 2.0">Optimus 2.0</option>
             </select>
           </div>
           <div class="col-4">
