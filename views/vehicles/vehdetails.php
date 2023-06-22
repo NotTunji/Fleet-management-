@@ -175,7 +175,7 @@
       $address = ""; // Initialize the address variable
   
       // Call the Google Geocoding API to get the address
-      $geocodingUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" . $latitude . "," . $longitude . "&key=YOUR_API_KEY";
+      $geocodingUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" . $latitude . "," . $longitude . "&key=AIzaSyCDcWMz2uaG90XlTtaHixGvTK-vUyrwv8A";
       $geocodingResponse = file_get_contents($geocodingUrl);
       $geocodingData = json_decode($geocodingResponse);
 
@@ -239,9 +239,9 @@
       // Resize the image to fit into the map
       const image = {
         url: "../../img/car.jpeg",
-        scaledSize: new google.maps.Size(50, 50), // Adjust the size as needed
+        scaledSize: new google.maps.Size(40, 40), // Adjust the size as needed
         origin: new google.maps.Point(0, 0), // origin
-        anchor: new google.maps.Point(0, 0)
+        anchor: new google.maps.Point(16, 16)
       };
 
       const marker = new google.maps.Marker({
