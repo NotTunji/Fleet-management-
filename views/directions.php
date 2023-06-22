@@ -146,6 +146,10 @@
     .switch-label input[type="checkbox"]:checked+.switch-label::after {
       transform: translateX(14px);
     }
+    #duration{
+      font-size: 20px;
+      font-weight: bold;
+    }
   </style>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDcWMz2uaG90XlTtaHixGvTK-vUyrwv8A&libraries=places&callback=initMap" async defer></script>
 </head>
@@ -166,7 +170,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$selectedVehicle = $_GET['reg_no'] ?? '';
+// $selectedVehicle = $_GET['reg_no'] ?? '';
+$queries = array();
+parse_str($_SERVER['QUERY_STRING'], $queries);
+$selectedVehicle =$queries['veh_no'];
 
 // Fetch the information from the database
 $veh_no = "";
@@ -182,6 +189,7 @@ if (!empty($selectedVehicle)) {
 
     if ($result && $result->num_rows > 0) {
         $row = $result->fetch_assoc();
+        // echo $row;
         $veh_no = $row['veh_no'];
         $start_add = $row['start_add'];
         $end_add = $row['end_add'];
@@ -196,7 +204,7 @@ $conn->close();
 
 <div class="container">
   <div class="box box1">
-    <h4>Registration Number:</h4>
+    <h4>Vehicle Number:</h4>
     <span><?php echo $veh_no; ?></span>
     <h4>Vehicle:</h4>
     <span><?php echo $start_add; ?></span>

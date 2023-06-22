@@ -139,7 +139,7 @@
           // Output data of each row
           while ($row = $result->fetch_assoc()) {
             echo "<tr>";
-            echo "<td><a href='directions.php?start=" . urlencode($row["start_add"]) . "&end=" . urlencode($row["end_add"]) . "'>" . $row["veh_no"] . "</a></td>";
+            echo "<td><a href='directions.php?veh_no=".$row["veh_no"]."&start=" . urlencode($row["start_add"]) . "&end=" . urlencode($row["end_add"]) . "'>" . $row["veh_no"] . "</a></td>";
 
             echo "<td>" . $row["start_add"] . "</td>";
             echo "<td>" . $row["end_add"] . "</td>";
