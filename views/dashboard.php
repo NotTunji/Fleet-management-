@@ -73,9 +73,9 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
   }
 
   #map-container {
-    width: 600px;
+    width: 700px;
     /* Adjust the width as per your preference */
-    height: 400px;
+    height: 700px;
     /* Adjust the height as per your preference */
   }
 

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -5,121 +6,195 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="../css/syle.css">
-  <link rel="stylesheet"
-        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+  <link rel="stylesheet" href="../css/Devices.css">
+  <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 
-        <style>
-             .dropdown {
-            position: relative;
-            display: inline-block;
-            padding: 0px 45px;
-            left: 510px;
+  <style>
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      padding: 0px 45px;
+      left: 510px;
+    }
 
-        }
+    .dropdown.right {
+      right: 4;
+    }
 
-        .dropdown.right {
-            right: 4;
-        }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      min-width: 160px;
+      padding: 2px;
+      background-color: #f9f9f9;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            min-width: 160px;
-            padding: 2px;
-            background-color: #f9f9f9;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        </style>
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
 </head>
 <body>
-    <input type='checkbox' id='nav-toggle'>
-    <div class="sidebar">
-        <div class="sidebar-brand">
-            <h1>
-                <span class="lab la-accusoft"></span> 
-                <span>   </span>
-                <!-- <span>Accusoft</span> -->
-            </h1>
-        </div>
-
-    <div class="sidebar-menu">
-        <ul>
-            <li>
-                <a href="dashboard.php" ><span class="las la-igloo"></span>
-                    <span>Dashboard</span></a>
-            </li>
-            <li>
-                <a href="./vehicles/vehicles.php"><span class="las la-truck"></span>
-                    <span>Vehicles</span></a>
-            </li>
-             <li>
-                <a href="./devices/devices.php"><span class="las la-toolbox"></span>
-                    <span>Devices</span></a>
-              </li>
-              <li>
-                    <a href="trips.php"class="active"><span class="las la-road"></span>
-                        <span>Trips</span></a>
-                </li>  
-                <li>
-                    <a href="report.php"><span class="las la-clipboard-list"></span>
-                        <span>Report</span></a>
-                </li>  
-                <li>
-                    <a href="vehicle_usage.php"><span class="las la-clipboard-list"></span>
-                        <span>Vehicle Usage </span></a>
-                </li>  
-                <li>
-                    <a href="./maintainance/maintainance.php"><span class="las la-user-edit"></span>
-                        <span>Maintainance</span></a>
-                </li>  
-</ul>
-        </div>
-    </div>
-    
+<input type='checkbox' id='nav-toggle'>
+<div class="sidebar">
+  <div class="sidebar-brand">
+    <h1>
+      <span class="lab la-accusoft"></span> 
+      <span>   </span>
+    </h1>
   </div>
-  <div class="main-content">
-    <header>
+
+  <div class="sidebar-menu">
+    <ul>
+      <li>
+        <a href="dashboard.php" ><span class="las la-igloo"></span>
+          <span>Dashboard</span></a>
+      </li>
+      <li>
+        <a href="./vehicles/vehicles.php"><span class="las la-truck"></span>
+          <span>Vehicles</span></a>
+      </li>
+      <li>
+        <a href="./devices/devices.php"><span class="las la-toolbox"></span>
+          <span>Devices</span></a>
+      </li>
+      <li>
+        <a href="trips.php" class="active"><span class="las la-road"></span>
+          <span>Trips</span></a>
+      </li>  
+      <li>
+        <a href="report.php"><span class="las la-clipboard-list"></span>
+          <span>Report</span></a>
+      </li>  
+      <li>
+        <a href="vehicle_usage.php"><span class="las la-clipboard-list"></span>
+          <span>Vehicle Usage </span></a>
+      </li>  
+      <li>
+        <a href="./maintainance/maintainance.php"><span class="las la-user-edit"></span>
+          <span>Maintenance</span></a>
+      </li>  
+    </ul>
+  </div>
+</div>
+
+</div>
+<div class="main-content">
+  <header>
     <h2>
-                <label for="nav-toggle">
-                    <span class="las la-bars"></span>
-                </label>
-                Trips
-            </h2>
-            <div class="dropdown">
-                <img src="../img/userprofile.png" width="40px" height="40px" alt="Dropdown Image"
-                    onclick="toggleDropdown()">
-                <div id="dropdownContent" class="dropdown-content">
-                    <a href="#">setting</a>
-                    <a href="#">Logout</a>
-                </div>
-
-
-
-            </div>
-            <div>
-                <h4>Tunji</h4>
-                <small>Super admin</small>
-            </div>
-    </header>
-    
-
-    <div>
-      ....
+      <label for="nav-toggle">
+        <span class="las la-bars"></span>
+      </label>
+      Trips
+    </h2>
+    <div class="dropdown">
+      <img src="../img/userprofile.png" width="40px" height="40px" alt="Dropdown Image" onclick="toggleDropdown()">
+      <div id="dropdownContent" class="dropdown-content">
+        <a href="#">Setting</a>
+        <a href="#">Logout</a>
+      </div>
     </div>
-</body>
+    <div>
+      <h4>Tunji</h4>
+      <small>Super admin</small>
+    </div>
+  </header>
+  <div class="button-vehicle">
+        <a href="add_trip.php" class="button">New trip</a>
+      </div>
+     
+      <button onclick="exportTableToExcel('tablee', 'tableData')">EXPORT</button>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Vehicle Number</th>
+          <th>Start Address</th>
+          <th>End Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        // Connect to the database (replace with your own credentials)
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "project";
+
+        // Create a connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Check connection
+        if ($conn->connect_error) {
+          die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Retrieve data from the trips table
+        $sql = "SELECT veh_no, start_add, end_add FROM trips";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+          // Output data of each row
+          while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td><a href='directions.php?start=" . urlencode($row["start_add"]) . "&end=" . urlencode($row["end_add"]) . "'>" . $row["veh_no"] . "</a></td>";
+
+            echo "<td>" . $row["start_add"] . "</td>";
+            echo "<td>" . $row["end_add"] . "</td>";
+            echo "</tr>";
+          }
+        } else {
+          echo "<tr><td colspan='3'>No trips found</td></tr>";
+        }
+
+        // Close the database connection
+        $conn->close();
+        ?>
+      </tbody>
+    </table>
+  </div>
+</div>
 <script>
-            function toggleDropdown() {
-                var dropdownContent = document.getElementById("dropdownContent");
-                if (dropdownContent.style.display === "block") {
-                    dropdownContent.style.display = "none";
-                } else {
-                    dropdownContent.style.display = "block";
-                }
-            }
-        </script>
+  function toggleDropdown() {
+    var dropdownContent = document.getElementById("dropdownContent");
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  }
+  function exportTableToExcel(tableID, filename = '') {
+        var downloadLink;
+        var dataType = 'application/vnd.ms-excel';
+        var tableSelect = document.getElementById(tableID);
+        var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+        // Specify file name
+        filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+        // Create download link element
+        downloadLink = document.createElement("a");
+
+        document.body.appendChild(downloadLink);
+
+        if (navigator.msSaveOrOpenBlob) {
+            var blob = new Blob(['\ufeff', tableHTML], {
+                type: dataType
+            });
+            navigator.msSaveOrOpenBlob(blob, filename);
+        } else {
+            // Create a link to the file
+            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+            // Setting the file name
+            downloadLink.download = filename;
+
+            //triggering the function
+            downloadLink.click();
+        }
+    }
+</script>
+</body>
 </html>
