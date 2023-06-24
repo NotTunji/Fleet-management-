@@ -143,7 +143,7 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
             position: relative;
             display: inline-block;
             padding: 0px 45px;
-            left: 510px;
+            left: 560px;
 
         }
 
