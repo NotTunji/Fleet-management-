@@ -143,6 +143,10 @@
     .switch-label input[type="checkbox"]:checked+.switch-label::after {
       transform: translateX(14px);
     }
+    #status {
+      font-size: 24px;
+      color: red;
+    }
   </style>
 </head>
 
@@ -209,13 +213,56 @@
         <?php echo $account_no; ?>
       </span>
       <h4>Location:</h4>
-      <p id="address"></p>
+      <p id="address"><?php echo $address; ?></p>
+      <div id="status">Stopped: <span id="time"></span></div>
+
     </div>
     <div class="box box2">
       <div id="map"></div>
     </div>
   </div>
+  <script>
+    function setStatusText(text, color) {
+      var statusElement = document.getElementById("status");
+      statusElement.textContent = text;
+      statusElement.style.color = color;
+    }
 
+    function updateTimeText(time) {
+      var timeElement = document.getElementById("time");
+      timeElement.textContent = time;
+    }
+
+    function getRandomTime(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function updateStatus() {
+      var statusElement = document.getElementById("status");
+      var isMoving = statusElement.textContent.includes("Moving");
+      var statusText, statusColor, time;
+
+      if (isMoving) {
+        statusText = "Stopped:";
+        statusColor = "red";
+        time = getRandomTime(10, 120);
+      } else {
+        statusText = "Moving:";
+        statusColor = "green";
+        time = 14;
+      }
+
+      setStatusText(statusText, statusColor);
+      updateTimeText(time + " seconds");
+
+      setTimeout(updateStatus, time * 1000);
+    }
+
+    // Start updating the status
+    updateStatus();
+  </script>
   <!-- Include the JavaScript code for the map here -->
   <script>
     // This example adds a marker to indicate a random location within Lagos, Nigeria.
@@ -249,6 +296,18 @@
         map,
         icon: image,
       });
+      marker.addListener("mouseover", function () {
+      // Retrieve car name and present location address
+      var carName = "<?php echo $veh_no; ?>";
+      var address = "<?php echo $address; ?>";
+
+      // Display the information (you can modify this according to your needs)
+      var tooltip = new google.maps.InfoWindow({
+        content: "<strong>" + carName + "</strong><br>" + address,
+      });
+
+      tooltip.open(map, marker);
+    });
 
       // Use Geocoding API to retrieve the address for the random location
       const geocoder = new google.maps.Geocoder();

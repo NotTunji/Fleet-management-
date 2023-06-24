@@ -11,8 +11,6 @@ $config_status = $_POST['config_status'];
 $phone_num = $_POST['phone_num'];
 $installed_at = $_POST['installed_at'];
 
-
-
 if ($serial_num != "") {
   // Check if the serial number already exists in the database
   $stmt = $conn->prepare("SELECT COUNT(*) FROM devices WHERE serial_num = ?");
@@ -28,11 +26,13 @@ if ($serial_num != "") {
     exit;
   } else {
     // Serial number does not exist, insert the data into the database
-    $stmt = $conn->prepare("INSERT INTO devices (serial_num,  account, type, status, config_status, phone_num, installed_at) VALUES (?,  ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO devices (serial_num, account, type, status, config_status, phone_num, installed_at) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param('sssssss', $serial_num, $account, $type, $status, $config_status, $phone_num, $installed_at);
-    
+
     if ($stmt->execute()) {
       echo 'Device configured successfully';
+      header("Location: Devices.php");
+      exit(); // Make sure to exit after redirecting
     } else {
       echo 'Error: ' . $stmt->error;
     }

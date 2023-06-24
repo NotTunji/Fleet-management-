@@ -111,7 +111,7 @@ include '../auth/connect.php';
                 <label for="nav-toggle">
                     <span class="las la-bars"></span>
                 </label>
-                Report
+                Vehicles
             </h2>
             <div class="dropdown">
                 <img src="../../img/userprofile.png" width="40px" height="40px" alt="Dropdown Image"
@@ -142,14 +142,15 @@ include '../auth/connect.php';
       </div>
       
       <div id="filterOptions" style="display: none;">
-        <label for="regNoFilter">Registration Number:</label>
-        <input type="text" id="regNoFilter" oninput="applyFilter()">
+  <label for="regNoFilter">Registration Number:</label>
+  <input type="text" id="regNoFilter" oninput="applyFilter()">
 
-        <label for="vehNoFilter">Vehicle:</label>
-        <input type="text" id="vehNoFilter" oninput="applyFilter()">
+  <label for="vehNoFilter">Vehicle:</label>
+  <input type="text" id="vehNoFilter" oninput="applyFilter()">
 
-        <!-- Add more filter options as needed -->
-      </div>
+  <label for="accountNoFilter">Account Name:</label>
+  <input type="text" id="accountNoFilter" oninput="applyFilter()">
+</div>
 
       <div class="table">
         <table id="tablee">
@@ -216,22 +217,25 @@ include '../auth/connect.php';
     }
 
     function applyFilter() {
-        var regNoFilter = document.getElementById("regNoFilter").value.toUpperCase();
-        var vehNoFilter = document.getElementById("vehNoFilter").value.toUpperCase();
+  var regNoFilter = document.getElementById("regNoFilter").value.toUpperCase();
+  var vehNoFilter = document.getElementById("vehNoFilter").value.toUpperCase();
+  var accountNoFilter = document.getElementById("accountNoFilter").value.toUpperCase();
 
-        var rows = document.getElementsByClassName("vehicle-row");
+  var rows = document.getElementsByClassName("vehicle-row");
 
-        for (var i = 0; i < rows.length; i++) {
-            var regNo = rows[i].getElementsByTagName("td")[0].innerText.toUpperCase();
-            var vehNo = rows[i].getElementsByTagName("td")[1].innerText.toUpperCase();
+  for (var i = 0; i < rows.length; i++) {
+    var regNo = rows[i].getElementsByTagName("td")[0].innerText.toUpperCase();
+    var vehNo = rows[i].getElementsByTagName("td")[1].innerText.toUpperCase();
+    var accountNo = rows[i].getElementsByTagName("td")[3].innerText.toUpperCase();
 
-            if (regNo.indexOf(regNoFilter) > -1 && vehNo.indexOf(vehNoFilter) > -1) {
-                rows[i].style.display = "";
-            } else {
-                rows[i].style.display = "none";
-            }
-        }
+    if (regNo.indexOf(regNoFilter) > -1 && vehNo.indexOf(vehNoFilter) > -1 && accountNo.indexOf(accountNoFilter) > -1) {
+      rows[i].style.display = "";
+    } else {
+      rows[i].style.display = "none";
     }
+  }
+}
+
 
     function confirmDelete() {
         return confirm("Are you sure you want to delete this vehicle?");

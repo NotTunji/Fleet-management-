@@ -9,15 +9,17 @@ if ($conn->connect_error) {
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Retrieve form data
- 
-  $veh_no = $_POST["veh_no"];
+  $reg_no = $_POST["reg_no"];
   $start_add = $_POST["start_add"];
   $end_add = $_POST["end_add"];
+  $date = $_POST["date"];
 
-  // Prepare and execute the SQL query to insert data into the vehicles table
-  $sql = "INSERT INTO trips ( veh_no, start_add, end_add) VALUES ('$veh_no', '$start_add', '$end_add')";
+  // Prepare and execute the SQL query to insert data into the trips table
+  $sql = "INSERT INTO trips (reg_no, start_add, end_add, date) VALUES ('$reg_no', '$start_add', '$end_add', '$date')";
   if ($conn->query($sql) === TRUE) {
-    echo "Vehicle added successfully";
+    // Data inserted successfully, redirect to trips.php
+    header("Location: trips.php");
+    exit(); // Make sure to exit after redirecting
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }

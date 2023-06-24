@@ -173,15 +173,15 @@ if ($conn->connect_error) {
 // $selectedVehicle = $_GET['reg_no'] ?? '';
 $queries = array();
 parse_str($_SERVER['QUERY_STRING'], $queries);
-$selectedVehicle =$queries['veh_no'];
+$selectedVehicle =$queries['reg_no'];
 
 // Fetch the information from the database
-$veh_no = "";
+$reg_no = "";
 $start_add = "";
 $end_add = "";
 
 if (!empty($selectedVehicle)) {
-    $sql = "SELECT veh_no, start_add, end_add FROM trips WHERE veh_no = ?";
+    $sql = "SELECT reg_no, start_add, end_add FROM trips WHERE reg_no = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $selectedVehicle);
     $stmt->execute();
@@ -190,7 +190,7 @@ if (!empty($selectedVehicle)) {
     if ($result && $result->num_rows > 0) {
         $row = $result->fetch_assoc();
         // echo $row;
-        $veh_no = $row['veh_no'];
+        $reg_no = $row['reg_no'];
         $start_add = $row['start_add'];
         $end_add = $row['end_add'];
     }
@@ -205,10 +205,10 @@ $conn->close();
 <div class="container">
   <div class="box box1">
     <h4>Vehicle Number:</h4>
-    <span><?php echo $veh_no; ?></span>
-    <h4>Vehicle:</h4>
+    <span><?php echo $reg_no; ?></span>
+    <h4>Start Location:</h4>
     <span><?php echo $start_add; ?></span>
-    <h4>Account Name:</h4>
+    <h4>Stop Location:</h4>
     <span><?php echo $end_add; ?></span>
     <div id="duration"></div>
   </div>

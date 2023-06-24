@@ -34,6 +34,9 @@
     .dropdown:hover .dropdown-content {
       display: block;
     }
+    .a{
+      color: black;
+    }
   </style>
 </head>
 <body>
@@ -106,6 +109,18 @@
       </div>
      
       <button onclick="exportTableToExcel('tablee', 'tableData')">EXPORT</button>
+      <div class="filter-container">
+        <button class="las la-filter" onclick="toggleFilter()"></button>
+      </div>
+      <div id="filterOptions" style="display: none;">
+  <label for="regNoFilter">Vehicle Number:</label>
+  <input type="text" id="regNoFilter" oninput="applyFilter()">
+
+  <label for="dateFilter">Date:</label>
+  <input type="date" id="dateFilter" oninput="applyFilter()">
+
+ 
+</div>
   <div>
     <table>
       <thead>
@@ -113,6 +128,7 @@
           <th>Vehicle Number</th>
           <th>Start Address</th>
           <th>End Address</th>
+          <th>Date</th>
         </tr>
       </thead>
       <tbody>
@@ -132,17 +148,18 @@
         }
 
         // Retrieve data from the trips table
-        $sql = "SELECT veh_no, start_add, end_add FROM trips";
+        $sql = "SELECT reg_no, start_add, end_add,date FROM trips";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
           // Output data of each row
           while ($row = $result->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td><a href='directions.php?veh_no=".$row["veh_no"]."&start=" . urlencode($row["start_add"]) . "&end=" . urlencode($row["end_add"]) . "'>" . $row["veh_no"] . "</a></td>";
+            echo "<tr class='vehicle-row'>";
+            echo "<td><a href='directions.php?reg_no=".$row["reg_no"]."&start=" . urlencode($row["start_add"]) . "&end=" . urlencode($row["end_add"]) . "'>" . $row["reg_no"] . "</a></td>";
 
             echo "<td>" . $row["start_add"] . "</td>";
             echo "<td>" . $row["end_add"] . "</td>";
+            echo "<td>" . $row["date"] . "</td>";
             echo "</tr>";
           }
         } else {
@@ -157,6 +174,34 @@
   </div>
 </div>
 <script>
+  function toggleFilter() {
+        var filterOptions = document.getElementById("filterOptions");
+        if (filterOptions.style.display === "block") {
+            filterOptions.style.display = "none";
+        } else {
+            filterOptions.style.display = "block";
+        }
+    }
+
+    function applyFilter() {
+  var regNoFilter = document.getElementById("regNoFilter").value.toUpperCase();
+  var dateFilter = document.getElementById("dateFilter").value.toUpperCase();
+ 
+
+  var rows = document.getElementsByClassName("vehicle-row");
+
+  for (var i = 0; i < rows.length; i++) {
+    var regNo = rows[i].getElementsByTagName("td")[0].innerText.toUpperCase();
+    var date = rows[i].getElementsByTagName("td")[3].innerText.toUpperCase();
+   
+
+    if (regNo.indexOf(regNoFilter) > -1 && date.indexOf(dateFilter) > -1 && accountNo.indexOf(accountNoFilter) > -1) {
+      rows[i].style.display = "";
+    } else {
+      rows[i].style.display = "none";
+    }
+  }
+}
   function toggleDropdown() {
     var dropdownContent = document.getElementById("dropdownContent");
     if (dropdownContent.style.display === "block") {

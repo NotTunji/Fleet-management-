@@ -7,8 +7,10 @@ if ($conn->connect_error) {
 }
 
 // SQL query to retrieve vehicle numbers from the vehicles table
-$sql = "SELECT veh_no FROM vehicles";
+$sql = "SELECT reg_no FROM vehicles";
 $result = $conn->query($sql);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,14 +38,14 @@ $result = $conn->query($sql);
         <strong class="fs-4">Add Trip </strong>
       </div>
       <div class="col-4">
-            <label class="form-label fw-semibold" for="veh_no">Vehicle Number</label>
-            <select class="form-select" name="veh_no" id="veh_no">
+            <label class="form-label fw-semibold" for="reg_no">Vehicle Number</label>
+            <select class="form-select" name="reg_no" id="reg_no">
               <option value="">--- Select Vehicle Number ---</option>
               <?php
               // Loop through the result set and populate the dropdown menu with vehicle numbers
               if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                  echo '<option value="' . $row['veh_no'] . '">' . $row['veh_no'] . '</option>';
+                  echo '<option value="' . $row['reg_no'] . '">' . $row['reg_no'] . '</option>';
                 }
               }
               ?>
@@ -56,6 +58,10 @@ $result = $conn->query($sql);
           <div class="col">
             <label class="form-label fw-semibold" for="end_add">End Address</label>
             <input type="text"id="endAddress" name="end_add" class="form-control fw-semibold" placeholder="Enter end address" required/>
+          </div>
+          <div class="col">
+            <label class="form-label fw-semibold" for="date">Date</label>
+            <input type="date" name="date" class="form-control fw-semibold" placeholder="Enter date" required/>
           </div>
         </div>
         <div class="card-footer text-end">

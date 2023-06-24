@@ -219,7 +219,7 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
                 <label for="nav-toggle">
                     <span class="las la-bars"></span>
                 </label>
-                Report
+                Dashboard
             </h2>
             <div class="dropdown">
                 <img src="../img/userprofile.png" width="40px" height="40px" alt="Dropdown Image"
@@ -433,13 +433,30 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
 const marker<?php echo $reg_no; ?> = new google.maps.Marker({
   position: { lat: <?php echo $lat; ?>, lng: <?php echo $lng; ?> },
   map: map,
-  label: "<?php echo $veh_no; ?>",
+  label: {
+    // text: "<?php echo $veh_no; ?>",
+    color: "black", // Adjust the label color if needed
+    fontWeight: "bold" // Adjust the label font weight if needed
+    
+  },
   icon: {
     url: '../img/car.jpeg', // Replace path/to/car.png with the actual path to your car image
     scaledSize: new google.maps.Size(32, 32), // Adjust the size as per your preference
     anchor: new google.maps.Point(16, 16) // Adjust the anchor point as per your preference
-  }
+  },
+  labelOrigin: new google.maps.Point(16, -10) // Adjust the label offset from the marker
 });
+const infoWindow<?php echo $reg_no; ?> = new google.maps.InfoWindow({
+        content: "<?php echo $reg_no; ?>",
+      });
+
+      // Show info window when marker is hovered
+      marker<?php echo $reg_no; ?>.addListener("mouseover", () => {
+        infoWindow<?php echo $reg_no; ?>.open(map, marker<?php echo $reg_no; ?>);
+      });
+
+      // Hide info window when marker is not hovered
+     
 
 
           <?php

@@ -107,7 +107,7 @@ $result = $conn->query($sql);
                 <label for="nav-toggle">
                     <span class="las la-bars"></span>
                 </label>
-                Report
+                Vehicle Usage
             </h2>
             <div class="dropdown">
                 <img src="../img/userprofile.png" width="40px" height="40px" alt="Dropdown Image"
