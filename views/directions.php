@@ -204,7 +204,8 @@ $conn->close();
 
 <div class="container">
   <div class="box box1">
-    <h4>Vehicle Number:</h4>
+   
+  <h4>Vehicle Number:</h4>
     <span><?php echo $reg_no; ?></span>
     <h4>Start Location:</h4>
     <span><?php echo $start_add; ?></span>

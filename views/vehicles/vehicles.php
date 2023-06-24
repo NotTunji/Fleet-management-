@@ -26,11 +26,13 @@ include '../auth/connect.php';
     }
     
     th, td {
-      border: 1px solid black;
+      /* border: 1px solid black; */
       padding: 8px;
       font-size: 15px;
       text-align: center;
+      
     }
+    tr:hover {background-color: gray;}
     .dropdown {
             position: relative;
             display: inline-block;
@@ -55,6 +57,9 @@ include '../auth/connect.php';
 
         .dropdown:hover .dropdown-content {
             display: block;
+        }
+        table{
+          overflow-y: scroll;
         }
   </style>
 </head>
@@ -118,7 +123,7 @@ include '../auth/connect.php';
                     onclick="toggleDropdown()">
                 <div id="dropdownContent" class="dropdown-content">
                     <a href="#">setting</a>
-                    <a href="#">Logout</a>
+                    <a href="../auth/logout.php">Logout</a>
                 </div>
 
 

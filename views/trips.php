@@ -96,7 +96,7 @@
       <img src="../img/userprofile.png" width="40px" height="40px" alt="Dropdown Image" onclick="toggleDropdown()">
       <div id="dropdownContent" class="dropdown-content">
         <a href="#">Setting</a>
-        <a href="#">Logout</a>
+        <a href="auth/logout.php">Logout</a>
       </div>
     </div>
     <div>

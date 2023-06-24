@@ -143,8 +143,18 @@
     .switch-label input[type="checkbox"]:checked+.switch-label::after {
       transform: translateX(14px);
     }
+
+    
+
     #status {
       font-size: 24px;
+    }
+
+    .moving {
+      color: green;
+    }
+
+    .stopped {
       color: red;
     }
   </style>
@@ -213,8 +223,10 @@
         <?php echo $account_no; ?>
       </span>
       <h4>Location:</h4>
-      <p id="address"><?php echo $address; ?></p>
-      <div id="status">Stopped: <span id="time"></span></div>
+      <p id="address">
+        <?php echo $address; ?>
+      </p>
+      <div id="status"></div>
 
     </div>
     <div class="box box2">
@@ -222,47 +234,47 @@
     </div>
   </div>
   <script>
-    function setStatusText(text, color) {
-      var statusElement = document.getElementById("status");
-      statusElement.textContent = text;
-      statusElement.style.color = color;
-    }
+        document.addEventListener("DOMContentLoaded", function() {
+            var statusElement = document.getElementById("status");
 
-    function updateTimeText(time) {
-      var timeElement = document.getElementById("time");
-      timeElement.textContent = time;
-    }
+            function updateStatus() {
+                var randomNumber = Math.random(); // Generate a random number between 0 and 1
 
-    function getRandomTime(min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+                // Generate a random time between 2 seconds ago and 2 minutes ago
+                var randomTime = Math.floor(Math.random() * (120000 - 2000 + 1)) + 2000;
+                var formattedTime = formatTime(randomTime);
 
-    function updateStatus() {
-      var statusElement = document.getElementById("status");
-      var isMoving = statusElement.textContent.includes("Moving");
-      var statusText, statusColor, time;
+                if (randomNumber < 0.5) {
+                    statusElement.textContent = formattedTime + " - moving";
+                    statusElement.className = "moving";
+                } else {
+                    statusElement.textContent = formattedTime + " - stopped";
+                    statusElement.className = "stopped";
+                }
+            }
 
-      if (isMoving) {
-        statusText = "Stopped:";
-        statusColor = "red";
-        time = getRandomTime(10, 120);
-      } else {
-        statusText = "Moving:";
-        statusColor = "green";
-        time = 14;
-      }
+            function formatTime(time) {
+                var seconds = Math.floor(time / 1000);
+                var minutes = Math.floor(seconds / 60);
+                seconds %= 60;
 
-      setStatusText(statusText, statusColor);
-      updateTimeText(time + " seconds");
+                // Add leading zeros if necessary
+                if (seconds < 10) {
+                    seconds = "0" + seconds;
+                }
 
-      setTimeout(updateStatus, time * 1000);
-    }
+                if (minutes < 10) {
+                    minutes = "0" + minutes;
+                }
 
-    // Start updating the status
-    updateStatus();
-  </script>
+                return minutes + ":" + seconds;
+            }
+
+            updateStatus(); // Initial update
+
+            setInterval(updateStatus, 1000); // Update status every second
+        });
+    </script>
   <!-- Include the JavaScript code for the map here -->
   <script>
     // This example adds a marker to indicate a random location within Lagos, Nigeria.
@@ -297,17 +309,17 @@
         icon: image,
       });
       marker.addListener("mouseover", function () {
-      // Retrieve car name and present location address
-      var carName = "<?php echo $veh_no; ?>";
-      var address = "<?php echo $address; ?>";
+        // Retrieve car name and present location address
+        var carName = "<?php echo $veh_no; ?>";
+        var address = "<?php echo $address; ?>";
 
-      // Display the information (you can modify this according to your needs)
-      var tooltip = new google.maps.InfoWindow({
-        content: "<strong>" + carName + "</strong><br>" + address,
+        // Display the information (you can modify this according to your needs)
+        var tooltip = new google.maps.InfoWindow({
+          content: "<strong>" + carName + "</strong><br>" + address,
+        });
+
+        tooltip.open(map, marker);
       });
-
-      tooltip.open(map, marker);
-    });
 
       // Use Geocoding API to retrieve the address for the random location
       const geocoder = new google.maps.Geocoder();

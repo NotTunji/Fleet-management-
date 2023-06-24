@@ -41,6 +41,9 @@ function getConfigStatusLabel($configStatus)
     }
   </style>
         <style>
+            table{
+                overflow-y: scroll;
+            }
         .Active {
             background-color:#04AA6D;
             color: white;
@@ -67,7 +70,7 @@ function getConfigStatusLabel($configStatus)
             border-radius: 2px;
         }
         th, td {
-      border: 1px solid black;
+      /* border: 1px solid black; */
       padding: 8px;
       font-size: 15px;
       text-align: center;
@@ -162,7 +165,7 @@ function getConfigStatusLabel($configStatus)
                     onclick="toggleDropdown()">
                 <div id="dropdownContent" class="dropdown-content">
                     <a href="#">setting</a>
-                    <a href="#">Logout</a>
+                    <a href="../auth/logout.php">Logout</a>
                 </div>
 
 

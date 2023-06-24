@@ -113,7 +113,7 @@ $result = $conn->query($sql);
                     onclick="toggleDropdown()">
                 <div id="dropdownContent" class="dropdown-content">
                     <a href="#">setting</a>
-                    <a href="#">Logout</a>
+                    <a href="../auth/logout.php">Logout</a>
                 </div>
 
 

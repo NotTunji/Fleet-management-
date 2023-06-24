@@ -22,7 +22,7 @@ $result = $conn->query($sql);
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
       <style>
         th, td {
-      border: 1px solid black;
+      /* border: 1px solid black; */
       padding: 8px;
       font-size: 15px;
       text-align: center;

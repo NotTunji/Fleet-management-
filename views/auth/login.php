@@ -1,43 +1,13 @@
 <?php
-
 session_start();
 
 include 'connect.php';
 
-// $username = $password = $error_message = "";
 
-// $username = $_POST['username'];
-// $password = $_POST['password'];
-// $stmt = $conn->prepare('SELECT username,password FROM login WHERE username=? AND password=?');
 
-// $stmt->bind_param("ss",$username,$password);
-// $stmt->execute();
-// $result = $stmt->get_result();
-
-// if($result->num_rows > 0)
-// {
-//     $user = $result->fetch_assoc();
-//     // echo "welcome ".$user["username"];
-
-//     header("Location:../analytics.php");
-// }
-
-// else
-// {
-//     $_SESSION['error_message'] = "invalid username or password";
-//     header("Location: " . $_SERVER['HTTP_REFERER']);
-
-// }
-
-// Check if the user is already authenticated
-if (isset($_SESSION['authenticated']) && $_SESSION['authenticated'] === true) {
-    // User is already logged in, redirect to the dashboard
-    header("Location: ../dashboard.php");
-    exit();
-}
 $error = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve the submitted username and password from the form
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -49,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows > 0) {
         // Username and password are correct
         // Set the session variable to true
-        session_start();
         $_SESSION['authenticated'] = true;
 
         // Redirect to the dashboard
@@ -146,9 +115,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <h1>Ctrack</h1>
 
-    <div class="login">
+   
+   
 
+    <div class="login">
         <form action="login.php" method="post">
+        <h3 style="text-align: center; font-weight: bold;">Admin Login</h3>
             <div class="container">
                 <label for="username"><b>Username</b></label>
                 <input type="text" placeholder="Enter Username" name="username" required>
@@ -159,9 +131,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <button>LOGIN</button>
                 <p id="error_message"><?php echo $error ?></p>
 
-
-
-
+                <!-- <div style="text-align: center; margin-top: 10px;">
+                    <a href="user.php" style="color: black; font-weight: bold;">Fleet Owner Page</a>
+                </div> -->
             </div>
         </form>
     </div>
