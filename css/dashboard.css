@@ -47,8 +47,8 @@
 }
 
   .dashboard-main{
-    display: flex;
-    align-items: center;  
+    display: flex; 
     justify-content: space-between;
     gap:2em;
   }
+

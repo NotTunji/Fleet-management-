@@ -77,7 +77,7 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
     /* Adjust the width as per your preference */
     height: 600px;
     /* Adjust the height as per your preference */
-    
+    ;
   }
 
   #map {
@@ -217,6 +217,16 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
     transform: rotateX(150deg);
   } */
 
+  .class-section{
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  .class-body{
+    display: flex;
+  }
+
 </style>
 
 <body>
@@ -313,15 +323,17 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
         </div>
       </section>
       <section class="class-section">
-        <div id="deviceChartContainer">
-          <canvas id="deviceChart"></canvas>
-        </div>
-        <div id="deviceChartContainer2">
-          <canvas id="deviceChart2"></canvas>
+        <div class="class-body">
+          <div id="deviceChartContainer">
+            <canvas id="deviceChart"></canvas>
+          </div>
+          <div id="deviceChartContainer2">
+            <canvas id="deviceChart2"></canvas>
+          </div>
         </div>
         <div id="tripsChartContainer">
-      <canvas id="tripsChart"></canvas>
-    </div>
+            <canvas id="tripsChart"></canvas>
+        </div>
       </section>
       <main>
   </div>
