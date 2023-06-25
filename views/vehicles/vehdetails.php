@@ -157,6 +157,10 @@
     .stopped {
       color: red;
     }
+    .mainbox{
+      /* font-size: medium; */
+      /* padding: 10px; */
+    }
   </style>
 </head>
 
@@ -210,6 +214,7 @@
 
   <div class="container">
     <div class="box box1">
+      <div class="mainbox">
       <h4>Registration Number:</h4>
       <span>
         <?php echo $reg_no; ?>
@@ -227,7 +232,7 @@
         <?php echo $address; ?>
       </p>
       <div id="status"></div>
-
+</div>
     </div>
     <div class="box box2">
       <div id="map"></div>
