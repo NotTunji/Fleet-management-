@@ -170,74 +170,77 @@
     </header>
 
     <?php
-    // Establish database connection
-    $conn = new mysqli("localhost", "root", "", "project");
+// Establish database connection
+$conn = new mysqli("localhost", "root", "", "project");
 
-    // Check if the connection was successful
-    if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-    }
+// Check if the connection was successful
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
 
-    // SQL query to retrieve data from vehicle_usage table
-    $sql = "SELECT reg_no, numdays, driver FROM vehicle_usage";
-    $result = $conn->query($sql);
+// SQL query to retrieve data from vehicle_usage table
+$sql = "SELECT reg_no, numdays, driver FROM vehicle_usage";
+$result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-      // Start building the HTML table
-      echo '<table>';
-      echo '<thead>';
-      echo '<tr>';
-      echo '<th>Vehicle ID</th>';
-      echo '<th>Number of Days</th>';
-      echo '<th>Driver</th>';
-      echo '</tr>';
-      echo '</thead>';
-      echo '<tbody>';
+if ($result->num_rows > 0) {
+  // Start building the HTML table
+  echo '<table>';
+  echo '<thead>';
+  echo '<tr>';
+  echo '<th>Vehicle ID</th>';
+  echo '<th>Number of Days</th>';
+  echo '<th>Driver</th>';
+  echo '<th>Status</th>'; // New column for status notification
+  echo '<th>Countdown</th>'; // New column for countdown
+  echo '</tr>';
+  echo '</thead>';
+  echo '<tbody>';
 
-      // Loop through each row of the result set
-      while ($row = $result->fetch_assoc()) {
-        $vehicleID = $row['reg_no'];
-        $numDays = $row['numdays'];
-        $driver = $row['driver'];
+  // Loop through each row of the result set
+  while ($row = $result->fetch_assoc()) {
+    $vehicleID = $row['reg_no'];
+    $numDays = $row['numdays'];
+    $driver = $row['driver'];
 
-        // Add a CSS class to highlight overused and underused vehicles
-        $cssClass = '';
-        if ($numDays > 10) {
-          $cssClass = 'overused';
-        } elseif ($numDays <= 10) {
-          $cssClass = 'underused';
-        }
-
-        // Generate table rows with the retrieved data
-        echo '<tr class="' . $cssClass . '">';
-        echo '<td>' . $vehicleID . '</td>';
-        echo '<td>' . $numDays . '</td>';
-        echo '<td>' . $driver . '</td>';
-        echo '</tr>';
-      }
-
-      echo '</tbody>';
-      echo '</table>';
+    // Add a CSS class to highlight overused and underused vehicles
+    $cssClass = '';
+    $status = '';
+    $countdown = '';
+    if ($numDays > 10) {
+      $cssClass = 'overused';
+      $status = 'Do Not Use';
+      $countdown = '01:00:00';
     } else {
-      echo '<p>No data found</p>';
+      $cssClass = 'underused';
+      $status = 'OK';
     }
 
-    // Close the database connection
-    $conn->close();
-    ?>
-    <button onclick="exportTableToExcel()" class="export-button">Export to Excel</button>
+    // Generate table rows with the retrieved data
+    echo '<tr class="' . $cssClass . '">';
+    echo '<td>' . $vehicleID . '</td>';
+    echo '<td>' . $numDays . '</td>';
+    echo '<td>' . $driver . '</td>';
+    echo '<td>' . $status . '</td>';
+    if ($cssClass == 'overused') {
+      echo '<td><span class="countdown" data-time="' . $countdown . '">' . $countdown . '</span></td>';
+    } else {
+      echo '<td></td>'; // Empty cell for countdown
+    }
+    echo '</tr>';
+  }
 
-    <script>
-      function toggleDropdown() {
-        var dropdownContent = document.getElementById("dropdownContent");
-        if (dropdownContent.style.display === "block") {
-          dropdownContent.style.display = "none";
-        } else {
-          dropdownContent.style.display = "block";
-        }
-      }
+  echo '</tbody>';
+  echo '</table>';
+} else {
+  echo '<p>No data found</p>';
+}
 
-      function exportTableToExcel() {
+// Close the database connection
+$conn->close();
+?>
+ <button onclick="exportTableToExcel()" class="export-button">Export to Excel</button>
+<script>
+     function exportTableToExcel() {
         var table = document.getElementsByTagName("table")[0];
         var html = table.outerHTML;
 
@@ -253,6 +256,54 @@
         downloadLink.click();
       }
     </script>
+    <script>
+  // Countdown timer
+  var countdownElements = document.getElementsByClassName("countdown");
+
+  function countdown() {
+    for (var i = 0; i < countdownElements.length; i++) {
+      var countdownElement = countdownElements[i];
+      var time = countdownElement.getAttribute("data-time");
+      var parts = time.split(":");
+      var hours = parseInt(parts[0]);
+      var minutes = parseInt(parts[1]);
+      var seconds = parseInt(parts[2]);
+
+      if (hours === 0 && minutes === 0 && seconds === 0) {
+        countdownElement.innerHTML = "00:00:00";
+        countdownElement.parentNode.parentNode.classList.remove("overused");
+        countdownElement.parentNode.parentNode.childNodes[3].innerHTML = "OK";
+        continue;
+      }
+
+      if (seconds === 0) {
+        if (minutes === 0) {
+          hours--;
+          minutes = 59;
+          seconds = 59;
+        } else {
+          minutes--;
+          seconds = 59;
+        }
+      } else {
+        seconds--;
+      }
+
+      hours = hours.toString().padStart(2, "0");
+      minutes = minutes.toString().padStart(2, "0");
+      seconds = seconds.toString().padStart(2, "0");
+
+      countdownElement.innerHTML = hours + ":" + minutes + ":" + seconds;
+      countdownElement.setAttribute("data-time", hours + ":" + minutes + ":" + seconds);
+    }
+
+    setTimeout(countdown, 1000);
+  }
+
+  countdown();
+</script>
+
+
   </div>
 </body>
 

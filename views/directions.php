@@ -150,6 +150,15 @@
       font-size: 20px;
       font-weight: bold;
     }
+       .mainbox{
+      border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px 8px 10px #888888;
+    }
+    .shadow-box {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
   </style>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDcWMz2uaG90XlTtaHixGvTK-vUyrwv8A&libraries=places&callback=initMap" async defer></script>
 </head>
@@ -203,8 +212,9 @@ $conn->close();
 ?>
 
 <div class="container">
+  <div class="shadow-box">
   <div class="box box1">
-   
+    <div class="mainbox">
   <h4>Vehicle Number:</h4>
     <span><?php echo $reg_no; ?></span>
     <h4>Start Location:</h4>
@@ -213,6 +223,8 @@ $conn->close();
     <span><?php echo $end_add; ?></span>
     <div id="duration"></div>
   </div>
+</div>
+</div>
   <div class="box box2">
     <div id="map"></div>
   </div>

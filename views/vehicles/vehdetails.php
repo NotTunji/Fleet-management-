@@ -158,9 +158,15 @@
       color: red;
     }
     .mainbox{
-      /* font-size: medium; */
-      /* padding: 10px; */
+      border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px 8px 10px #888888;
     }
+    .shadow-box {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
   </style>
 </head>
 
@@ -213,27 +219,23 @@
   ?>
 
   <div class="container">
-    <div class="box box1">
-      <div class="mainbox">
+  <div class="shadow-box">
+  <div class="box box1">
+    <div class="mainbox">
       <h4>Registration Number:</h4>
-      <span>
-        <?php echo $reg_no; ?>
-      </span>
-      <h4>Vehicle :</h4>
-      <span>
-        <?php echo $veh_no; ?>
-      </span>
+      <span><?php echo $reg_no; ?></span>
+      <h4>Vehicle:</h4>
+      <span><?php echo $veh_no; ?></span>
       <h4>Account Name:</h4>
-      <span>
-        <?php echo $account_no; ?>
-      </span>
+      <span><?php echo $account_no; ?></span>
       <h4>Location:</h4>
-      <p id="address">
-        <?php echo $address; ?>
-      </p>
+      <p id="address"><?php echo $address; ?></p>
       <div id="status"></div>
-</div>
     </div>
+  </div>
+</div>
+
+
     <div class="box box2">
       <div id="map"></div>
     </div>
